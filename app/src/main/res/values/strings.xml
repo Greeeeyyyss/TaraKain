@@ -1,0 +1,207 @@
+<resources>
+    <string name="app_name">Tara Kain</string>
+    <string name="choose_category">Choose a category</string>
+    <string name="popular_kainan">Popular Kainan</string>
+    <string name="near_me">Restaurants Near Me</string>
+    <string name="my_favorites">My Favorites</string>
+    <string name="faqs">FAQs</string>
+    <string name="contact_support">Contact Support</string>
+
+    <string-array name="food_categories">
+        <item name="all">All</item>
+        <item name="pinoy_food">Pinoy</item>
+        <item name="mexican_food">Mexican</item>
+        <item name="chinese_food">Chinese</item>
+        <item name="japanese_food">Japanese</item>
+        <item name="korean_food">Korean</item>
+        <item name="thai food">Thai</item>
+        <item name="american_food">American</item>
+        <item name="italian_food">Italian</item>
+        <item name="cafe">Cafe</item>
+        <item name="buffet">Buffet and Unli</item>
+        <item name="bar">Resto Bar</item>
+        <item name="five_star_food">Five Star Restaurant</item>
+        <item name="fast_food">Fast Food</item>
+        <item name="must_try">Recommended</item>
+    </string-array>
+
+    <string-array name="pinoy_resto">
+        <item name="">Mang Inasal</item>
+        <item name="">Bacolod Inasal</item>
+        <item name="">Kamay Kainan</item>
+        <item name="">Cabalen</item>
+        <item name="">Balai Ilocos</item>
+        <item name="">Baliwag</item>
+        <item name="">KKK</item>
+        <item name="">Manilachon</item>
+        <item name="">Davao Grill</item>
+        <item name="">Goldilocks</item>
+        <item name="">Max\'s</item>
+        <item name="">Razon\'s of Guagua</item>
+        <item name="">Tapa King</item>
+        <item name="">Sisig Hooray</item>
+        <item name="">Barrio Fiesta</item>
+        <item name="">Kuya J</item>
+        <item name="">Mesa</item>
+        <item name="">Goto King</item>
+        <item name="">Mangan</item>
+        <item name="">Classic Savory</item>
+        <item name="">Adobo Connection</item>
+        <item name="">Binalot</item>
+        <item name="">Kamayan</item>
+        <item name="">Kamayan</item>
+    </string-array>
+
+    <string-array name="japanese_resto">
+        <item name="">Tokyo Tokyo</item>
+        <item name="">Yoshinoya</item>
+        <item name="">Pepperlunch</item>
+        <item name="">Yabu</item>
+        <item name="">Maisen</item>
+        <item name="">SumoSam</item>
+        <item name="">Sambokojin</item>
+        <item name="">Ippon Yari</item>
+        <item name="">Ippudo</item>
+        <item name="">Muragame Udon</item>
+        <item name="">Ramen Nagi</item>
+        <item name="">Teriyaki Boy</item>
+        <item name="">Komoro</item>
+        <item name="">Saisaki</item>
+    </string-array>
+
+    <string-array name="korean">
+        <item name="">Sambokojin</item>
+        <item name="">Kyochon</item>
+        <item name="">Bonchon</item>
+        <item name="">Oriental Seoul</item>
+        <item name="">Mr. Kimbob</item>
+        <item name="">Samgyupsalamat</item>
+        <item name="">Romantic Baboy</item>
+    </string-array>
+
+    <string-array name="thai">
+        <item name="">Siam Thai</item>
+        <item name="">Soi Thai</item>
+        <item name="">Nav - Modern Thai Cuisine</item>
+    </string-array>
+
+    <string-array name="chinese_resto">
+        <item name="">Din Tai Fung</item>
+        <item name="">Fat Fook</item>
+        <item name="">Masuki</item>
+        <item name="">Chowking</item>
+        <item name="">Mey Lin</item>
+        <item name="">Hen Lin</item>
+        <item name="">Mann Hann</item>
+        <item name="">Tim Ho Wan</item>
+        <item name="">Lugang Cafe</item>
+        <item name="">Luk Yuen</item>
+        <item name="">Hainanese</item>
+        <item name="">Superbowl of China</item>
+    </string-array>
+
+    <string-array name="mexican">
+        <item name="">Chilis</item>
+        <item name="">Taco Bell</item>
+        <item name="">El Pollo Loco</item>
+        <item name="">Mexicali</item>
+        <item name="">Dulcinea</item>
+        <item name="">El Chupacabra</item>
+        <item name="">Silantro</item>
+        <item name="">La Carnita</item>
+        <item name="">Army Navy</item>
+    </string-array>
+
+    <string-array name="italian">
+        <item name="">Contis</item>
+        <item name="">Italiannis</item>
+        <item name="">House of Lasagna</item>
+        <item name="">Pound</item>
+        <item name="">Cibo</item>
+        <item name="">Sbarro</item>
+        <item name="">Pizza Hut</item>
+        <item name="">Shakey\'s</item>
+        <item name="">Amici</item>
+        <item name="">Piadina Italiana</item>
+        <item name="">The Old Spaghetti House</item>
+    </string-array>
+
+    <string-array name="american">
+        <item name="">Pancake House</item>
+        <item name="">TGIF</item>
+        <item name="">Dennys</item>
+        <item name="">Taco Bell</item>
+        <item name="">Kenny Rogers</item>
+        <item name="">Army Navy</item>
+        <item name="">Chili\'s</item>
+        <item name="">Burger King</item>
+        <item name="">Racks</item>
+        <item name="">Papa John\'s</item>
+        <item name="">Yellow Cab Pizza</item>
+        <item name="">Buffalo\'s Wings N\' Things></item>
+        <item name="">Case Verde</item>
+        <item name="">Frankies</item>
+    </string-array>
+
+    <string-array name="cafe">
+        <item name="">Starbucks</item>
+        <item name="">Zoo Coffee</item>
+        <item name="">Sunnies Cafe</item>
+        <item name="">Bo\'s Coffee</item>
+        <item name="">The Coffee Bean Tea Leaf</item>
+        <item name="">Seattle\'s Best Coffee</item>
+    </string-array>
+
+    <string-array name="buffet">
+        <item name="">Vikings</item>
+        <item name="">NIU (Vikings)</item>
+        <item name="">Sambokojin</item>
+        <item name="">Dads</item>
+        <item name="">Yakimix</item>
+        <item name="">Buffet 101</item>
+        <item name="">Four Seasons</item>
+        <item name="">Kamay Kainan</item>
+        <item name="">Cabalen</item>
+        <item name="">Circles</item>
+        <item name="">Spiral</item>
+        <item name="">Siam Thai</item>
+        <item name="">Cafe Ilang-Ilang</item>
+    </string-array>
+
+    <string-array name="bar">
+        <item name="">Gerry\'s Grill</item>
+        <item name="">Giligan\'s</item>
+        <item name=""></item>
+        <item name=""></item>
+    </string-array>
+
+    <string-array name="fast_food">
+        <item name="">Jollibee</item>
+        <item name="">Mcdonalds</item>
+        <item name="">Chowking</item>
+        <item name="">KFC</item>
+        <item name="">Wendy\'s</item>
+        <item name="">Burger King</item>
+        <item name="">Greenwich</item>
+        <item name="">Shakeys</item>
+        <item name="">Army Navy</item>
+        <item name="">Zarks</item>
+        <item name="">8Cuts</item>
+    </string-array>
+
+    <string-array name="five_star">
+        <item name=""></item>
+        <item name=""></item>
+        <item name=""></item>
+        <item name=""></item>
+    </string-array>
+
+    <!-- ADS -->
+    <string-array name="recommended">
+        <item name="">Mangan</item>
+        <item name=""></item>
+        <item name=""></item>
+        <item name=""></item>
+    </string-array>
+
+</resources>
