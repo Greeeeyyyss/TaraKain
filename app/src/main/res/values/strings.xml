@@ -3,9 +3,13 @@
     <string name="choose_category">Choose a category</string>
     <string name="popular_kainan">Popular Kainan</string>
     <string name="near_me">Restaurants Near Me</string>
+    <string name="kara_krus">Kara Krus</string>
     <string name="my_favorites">My Favorites</string>
     <string name="faqs">FAQs</string>
     <string name="contact_support">Contact Support</string>
+
+    <!-- Common -->
+    <string name="done">Done</string>
 
     <string-array name="food_categories">
         <item name="all">All</item>
@@ -33,6 +37,7 @@
         <item name="">Balai Ilocos</item>
         <item name="">Baliwag</item>
         <item name="">KKK</item>
+        <item name="">Cafe Bonifacio</item>
         <item name="">Manilachon</item>
         <item name="">Davao Grill</item>
         <item name="">Goldilocks</item>
@@ -50,6 +55,8 @@
         <item name="">Binalot</item>
         <item name="">Kamayan</item>
         <item name="">Kamayan</item>
+        <item name="">Buddy\'s</item>
+        <item name="">Ineng\'s BBQ</item>
     </string-array>
 
     <string-array name="japanese_resto">
@@ -67,6 +74,8 @@
         <item name="">Teriyaki Boy</item>
         <item name="">Komoro</item>
         <item name="">Saisaki</item>
+        <item name="">Teppanyaki</item>
+        <item name="">Tenya</item>
     </string-array>
 
     <string-array name="korean">
@@ -77,6 +86,7 @@
         <item name="">Mr. Kimbob</item>
         <item name="">Samgyupsalamat</item>
         <item name="">Romantic Baboy</item>
+        <item name="">Jang Ga Nae</item>
     </string-array>
 
     <string-array name="thai">
@@ -98,10 +108,13 @@
         <item name="">Luk Yuen</item>
         <item name="">Hainanese</item>
         <item name="">Superbowl of China</item>
+        <item name="">Siomai King</item>
+        <item name="">Master Siomai</item>
+        <item name="">Siomai House</item>
     </string-array>
 
     <string-array name="mexican">
-        <item name="">Chilis</item>
+        <item name="">Chili\'s</item>
         <item name="">Taco Bell</item>
         <item name="">El Pollo Loco</item>
         <item name="">Mexicali</item>
@@ -110,6 +123,9 @@
         <item name="">Silantro</item>
         <item name="">La Carnita</item>
         <item name="">Army Navy</item>
+        <item name="">Chihuahua</item>
+        <item name="">Senor Pollo</item>
+        <item name="">Mad Marks</item>
     </string-array>
 
     <string-array name="italian">
@@ -124,6 +140,7 @@
         <item name="">Amici</item>
         <item name="">Piadina Italiana</item>
         <item name="">The Old Spaghetti House</item>
+        <item name="">Linguini Fini</item>
     </string-array>
 
     <string-array name="american">
@@ -140,7 +157,7 @@
         <item name="">Yellow Cab Pizza</item>
         <item name="">Buffalo\'s Wings N\' Things></item>
         <item name="">Case Verde</item>
-        <item name="">Frankies</item>
+        <item name="">Frankies Buffalo Wings</item>
     </string-array>
 
     <string-array name="cafe">
@@ -150,6 +167,15 @@
         <item name="">Bo\'s Coffee</item>
         <item name="">The Coffee Bean Tea Leaf</item>
         <item name="">Seattle\'s Best Coffee</item>
+        <item name="">Figaro</item>
+        <item name="">St. Marc Cafe</item>
+        <item name="">Mozu Cafe</item>
+        <item name="">Lugang Cafe</item>
+        <item name="">Pie Face</item>
+        <item name="">Satchmi</item>
+        <item name="">The Lost Bread</item>
+        <item name="">Hobingsu Cafe</item>
+        <item name="">Yo! Panda</item>
     </string-array>
 
     <string-array name="buffet">
@@ -171,8 +197,7 @@
     <string-array name="bar">
         <item name="">Gerry\'s Grill</item>
         <item name="">Giligan\'s</item>
-        <item name=""></item>
-        <item name=""></item>
+        <item name="">Salamangka</item>
     </string-array>
 
     <string-array name="fast_food">
@@ -190,18 +215,24 @@
     </string-array>
 
     <string-array name="five_star">
-        <item name=""></item>
-        <item name=""></item>
-        <item name=""></item>
-        <item name=""></item>
+        <item name="">Mary Grace</item>
+        <item name="">Wildflour</item>
+        <item name="">Aristocrat</item>
+        <item name="">NIU by Vikings</item>
+        <item name="">Locavore</item>
+        <item name="">Cafe Juanita</item>
     </string-array>
 
     <!-- ADS -->
     <string-array name="recommended">
         <item name="">Mangan</item>
-        <item name=""></item>
-        <item name=""></item>
-        <item name=""></item>
+        <item name="">Cafe Bonifacio</item>
+        <item name="">Rubs</item>
+        <item name="">Locavore</item>
+        <item name="">Siam Thai</item>
+        <item name="">Juan Bistro</item>
+        <item name="">Kanto Freestyle</item>
+        <item name="">Bullchef</item>
     </string-array>
 
 </resources>

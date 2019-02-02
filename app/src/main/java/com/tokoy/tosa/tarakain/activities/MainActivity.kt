@@ -1,7 +1,8 @@
-package com.tokoy.tosa.tarakain
+package com.tokoy.tosa.tarakain.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.tokoy.tosa.tarakain.R
 
 class MainActivity : AppCompatActivity() {
 

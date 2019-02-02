@@ -1,23 +1,23 @@
-package com.tokoy.tosa.tarakain
+package com.tokoy.tosa.tarakain.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
+import com.tokoy.tosa.tarakain.R
+import com.tokoy.tosa.tarakain.utils.Constants
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        setupMain()
-    }
-
-    private fun setupMain() {
-        Handler().postDelayed({ displayMain() }, 2000L)
+        displayMain()
     }
 
     private fun displayMain() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        Handler().postDelayed({
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }, Constants.Duration.splash)
     }
 }
