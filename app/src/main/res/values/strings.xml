@@ -4,9 +4,28 @@
     <string name="popular_kainan">Popular Kainan</string>
     <string name="near_me">Restaurants Near Me</string>
     <string name="kara_krus">Kara Krus</string>
+    <string name="recommendation">Recommended</string>
     <string name="my_favorites">My Favorites</string>
     <string name="faqs">FAQs</string>
     <string name="contact_support">Contact Support</string>
+
+    <!-- Categories -->
+
+    <string name="all">All</string>
+    <string name="pinoy">Pinoy</string>
+    <string name="american">American</string>
+    <string name="mexican">Mexican</string>
+    <string name="japanese">Japanese</string>
+    <string name="chinese">Chinese</string>
+    <string name="korean">Korean</string>
+    <string name="thai">Thain</string>
+    <string name="italian">Italian</string>
+    <string name="five_star">Five Star</string>
+    <string name="cafe">Cafe</string>
+    <string name="buffet">buffet</string>
+    <string name="bar">Bar</string>
+    <string name="fast_food">Fast Food</string>
+    <string name="latest">New</string>
 
     <!-- Common -->
     <string name="done">Done</string>
