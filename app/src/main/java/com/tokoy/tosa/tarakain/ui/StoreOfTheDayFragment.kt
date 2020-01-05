@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.databinding.FragmentStoreOfTheDayBinding
 import com.tokoy.tosa.tarakain.utils.Constants
@@ -82,6 +83,6 @@ class StoreOfTheDayFragment : Fragment() {
     }
 
     private fun onChooseClick() {
-        // TODO
+        findNavController().navigate(R.id.action_storeOfTheDay_to_chooseCategory)
     }
 }

@@ -7,6 +7,7 @@ import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.tokoy.tosa.tarakain.R
@@ -21,9 +22,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.toolbarLeftButton.setOnClickListener {
-            binding.drawerLayout.openDrawer(GravityCompat.START)
-        }
+
         val navController = NavHostFragment.findNavController(nav_host_fragment)
         binding.navigationView.setupWithNavController(navController)
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
@@ -63,15 +62,70 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         when (destination.id) {
             R.id.storeOfTheDayFragment -> {
                 binding.toolbarTitle.text = getString(R.string.store_of_the_day)
+                binding.toolbarLeftButton.setImageResource(R.drawable.ic_menu)
+                binding.toolbarLeftButton.setOnClickListener {
+                    openDrawer()
+                }
+                binding.toolbarRightButton.visibility = View.VISIBLE
+                binding.toolbarRightButton.setOnClickListener {
+                    navController().navigate(R.id.action_storeOfTheDay_to_addStore)
+                }
             }
+            R.id.addStoreFragment -> {
+                binding.toolbarTitle.text = getString(R.string.add_store)
+                binding.toolbarLeftButton.setImageResource(R.drawable.ic_back)
+                binding.toolbarLeftButton.setOnClickListener {
+                    navController().popBackStack()
+                }
+                binding.toolbarRightButton.visibility = View.GONE
+            }
+            R.id.chooseCategoryFragment -> {
+                binding.toolbarTitle.text = getString(R.string.choose_category)
+                binding.toolbarLeftButton.setImageResource(R.drawable.ic_back)
+                binding.toolbarLeftButton.setOnClickListener {
+                    navController().popBackStack()
+                }
+                binding.toolbarRightButton.visibility = View.VISIBLE
+                binding.toolbarRightButton.setOnClickListener {
+                    // TODO add category screen
+                }
+            }
+
         }
     }
 
     fun getCategories(): List<Category> {
-        return listOf()
+        return listOf(
+            Category(1, "Filipino"),
+            Category(2, "American"),
+            Category(3, "Japanese"),
+            Category(4, "Korean"),
+            Category(5, "Chinese"),
+            Category(6, "Italian"),
+            Category(7, "Spanish"),
+            Category(8, "Mexican"),
+            Category(9, "Thai"),
+            Category(10, "Cafe"),
+            Category(11, "Fast Food"),
+            Category(12, "Buffet"),
+            Category(13, "Pub"),
+            Category(14, "Fine Dining")
+        )
     }
 
     fun getStores(): List<Store> {
         return listOf()
+    }
+
+    private fun navController(): NavController {
+        return Navigation.findNavController(this, R.id.nav_host_fragment)
+    }
+
+    private fun closeDrawer() {
+        binding.drawerLayout.closeDrawer(GravityCompat.END)
+    }
+
+    private fun openDrawer() {
+        binding.drawerLayout.openDrawer(GravityCompat.START)
     }
 }
