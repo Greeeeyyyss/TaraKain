@@ -2,19 +2,21 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/nav_popular_kainan"
+    <item android:id="@+id/nav_store_of_the_day"
           android:icon="@drawable/ic_spoon_fork"
-          android:title="@string/popular_kainan"/>
-
-    <item android:id="@+id/nav_my_favorites"
-          android:icon="@drawable/ic_heart"
-          android:title="@string/my_favorites"/>
-
-    <item android:id="@+id/nav_recommended"
+          android:title="@string/store_of_the_day" />
+    <item android:id="@+id/nav_favorite_stores"
+            android:icon="@drawable/ic_heart"
+            android:title="@string/favorites_stores"/>
+    <item android:id="@+id/nav_featured_stores"
           android:icon="@drawable/ic_star"
-          android:title="@string/recommendation" />
+          android:title="@string/featured_stores" />
 
-    <item android:id="@+id/nav_kara_krus"
-          android:icon="@drawable/ic_flip"
-          android:title="@string/kara_krus" />
+    <item android:id="@+id/nav_promos"
+            android:icon="@drawable/ic_list"
+            android:title="@string/promos" />
+
+    <item android:id="@+id/nav_heads_or_tails"
+            android:icon="@drawable/ic_flip"
+            android:title="@string/heads_or_tails" />
 </menu>

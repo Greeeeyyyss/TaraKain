@@ -15,5 +15,6 @@ enum class Category {
     BUFFET,
     FAST_FOOD,
     LATEST,
-    RECOMMENDED
+    RECOMMENDED,
+    PROMOS
 }

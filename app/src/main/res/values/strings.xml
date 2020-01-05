@@ -1,9 +1,17 @@
 <resources>
     <string name="app_name">Tara Kain</string>
+    <string name="store_of_the_day">Store of the Day</string>
+    <string name="favorites_stores">Favorite Stores</string>
+    <string name="my_stores">My Stores</string>
+    <string name="heads_or_tails">Heads or Tails</string>
+    <string name="featured_stores">Featured Stores</string>
+    <string name="promos">Promos</string>
+    <string name="choose">Choose</string>
+    <string name="randomize">Randomize</string>
+
     <string name="choose_category">Choose a category</string>
     <string name="popular_kainan">Popular Kainan</string>
     <string name="near_me">Restaurants Near Me</string>
-    <string name="kara_krus">Kara Krus</string>
     <string name="recommendation">Recommended</string>
     <string name="my_favorites">My Favorites</string>
     <string name="faqs">FAQs</string>
@@ -29,6 +37,8 @@
 
     <!-- Common -->
     <string name="done">Done</string>
+    <string name="add_store">Add Store</string>
+    <string name="add_favorite">Add Favorite</string>
 
     <string-array name="food_categories">
         <item name="all">All</item>
@@ -45,37 +55,35 @@
         <item name="bar">Resto Bar</item>
         <item name="five_star_food">Five Star Restaurant</item>
         <item name="fast_food">Fast Food</item>
-        <item name="must_try">Recommended</item>
     </string-array>
 
     <string-array name="pinoy_resto">
-        <item name="">Mang Inasal</item>
-        <item name="">Bacolod Inasal</item>
-        <item name="">Kamay Kainan</item>
-        <item name="">Cabalen</item>
-        <item name="">Balai Ilocos</item>
-        <item name="">Baliwag</item>
-        <item name="">KKK</item>
-        <item name="">Cafe Bonifacio</item>
-        <item name="">Manilachon</item>
-        <item name="">Davao Grill</item>
-        <item name="">Goldilocks</item>
-        <item name="">Max\'s</item>
-        <item name="">Razon\'s of Guagua</item>
-        <item name="">Tapa King</item>
-        <item name="">Sisig Hooray</item>
-        <item name="">Barrio Fiesta</item>
-        <item name="">Kuya J</item>
-        <item name="">Mesa</item>
-        <item name="">Goto King</item>
-        <item name="">Mangan</item>
-        <item name="">Classic Savory</item>
-        <item name="">Adobo Connection</item>
-        <item name="">Binalot</item>
-        <item name="">Kamayan</item>
-        <item name="">Kamayan</item>
-        <item name="">Buddy\'s</item>
-        <item name="">Ineng\'s BBQ</item>
+        <item name="mang_inasal">Mang Inasal</item>
+        <item name="bacolod_inasal">Bacolod Inasal</item>
+        <item name="kamay_kainan">Kamay Kainan</item>
+        <item name="cabalen">Cabalen</item>
+        <item name="balai_ilocos">Balai Ilocos</item>
+        <item name="baliwag">Baliwag</item>
+        <item name="kkk">KKK</item>
+        <item name="cafe_bonifacio">Cafe Bonifacio</item>
+        <item name="manilachon">Manilachon</item>
+        <item name="davao_grill">Davao Grill</item>
+        <item name="goldilocks">Goldilocks</item>
+        <item name="max">Max\'s</item>
+        <item name="razon">Razon\'s of Guagua</item>
+        <item name="tapa_king">Tapa King</item>
+        <item name="sisig">Sisig Hooray</item>
+        <item name="barrio_fiesta">Barrio Fiesta</item>
+        <item name="kuya_j">Kuya J</item>
+        <item name="mesa">Mesa</item>
+        <item name="goto_king">Goto King</item>
+        <item name="mangan">Mangan</item>
+        <item name="classic_savory">Classic Savory</item>
+        <item name="adobo_connection">Adobo Connection</item>
+        <item name="binalot">Binalot</item>
+        <item name="kamayan">Kamayan</item>
+        <item name="buddys">Buddy\'s</item>
+        <item name="inengs">Ineng\'s BBQ</item>
     </string-array>
 
     <string-array name="japanese_resto">
@@ -174,7 +182,7 @@
         <item name="">Racks</item>
         <item name="">Papa John\'s</item>
         <item name="">Yellow Cab Pizza</item>
-        <item name="">Buffalo\'s Wings N\' Things></item>
+        <item name="">Buffalo\'s Wings N\' Things</item>
         <item name="">Case Verde</item>
         <item name="">Frankies Buffalo Wings</item>
     </string-array>
@@ -253,5 +261,8 @@
         <item name="">Kanto Freestyle</item>
         <item name="">Bullchef</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
