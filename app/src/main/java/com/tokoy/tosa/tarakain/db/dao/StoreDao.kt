@@ -9,7 +9,7 @@ import com.tokoy.tosa.tarakain.db.models.Store
 @Dao
 interface StoreDao {
     @Insert
-    fun insert(store: Store)
+    suspend fun insert(store: Store)
 
     @Query("UPDATE Store SET isFavorite = 1 WHERE id = :id")
     fun addToFavorite(id: Int)

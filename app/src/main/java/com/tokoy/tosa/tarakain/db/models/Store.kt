@@ -5,11 +5,10 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Store constructor(
-    @PrimaryKey var id: Int,
+    @PrimaryKey(autoGenerate = true) var id: Int? = null,
     var name: String,
-    var description: String?,
-    var categories: List<Category>,
-    var minPrice: Float?,
-    var maxPrice: Float?,
+    var description: String? = null,
+    var minPrice: Float? = null,
+    var maxPrice: Float? = null,
     var isFavorite: Boolean
 )
