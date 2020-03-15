@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Category constructor(
-    @PrimaryKey var id: Int,
+    @PrimaryKey(autoGenerate = true) var id: Int? = null,
     var name: String
 )
 

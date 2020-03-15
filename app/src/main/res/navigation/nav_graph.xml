@@ -16,6 +16,10 @@
             android:id="@+id/storeOfTheDayFragment"
             android:name="com.tokoy.tosa.tarakain.ui.StoreOfTheDayFragment"
             android:label="StoreOfTheDayFragment" >
+        <argument
+            android:name="isFavorites"
+            android:defaultValue="false"
+            app:argType="boolean" />
         <action
                 android:id="@+id/action_storeOfTheDay_to_addStore"
                 app:destination="@id/addStoreFragment" />
@@ -23,6 +27,10 @@
                 android:id="@+id/action_storeOfTheDay_to_chooseCategory"
                 app:destination="@id/chooseCategoryFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/headsOrTailsFragment"
+        android:name="com.tokoy.tosa.tarakain.ui.HeadsOrTailsFragment"
+        android:label="Heads Or Tails" />
     <fragment
             android:id="@+id/addStoreFragment"
             android:name="com.tokoy.tosa.tarakain.ui.AddStoreFragment"

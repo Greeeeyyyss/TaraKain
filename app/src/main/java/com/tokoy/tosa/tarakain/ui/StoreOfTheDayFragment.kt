@@ -8,16 +8,28 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.databinding.FragmentStoreOfTheDayBinding
+import com.tokoy.tosa.tarakain.db.models.Store
 import com.tokoy.tosa.tarakain.utils.Constants
+import com.tokoy.tosa.tarakain.utils.InjectorUtils
+import com.tokoy.tosa.tarakain.viewmodels.StoreViewModel
 import java.util.Random
 
 class StoreOfTheDayFragment : Fragment() {
     private lateinit var binding: FragmentStoreOfTheDayBinding
     private var stores = arrayOf<String>()
     private var handler: Handler?  = null
+
+    private val viewModel: StoreViewModel by viewModels {
+        InjectorUtils.provideStoreViewModelFactory(requireContext())
+    }
+
+    private val args: StoreOfTheDayFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,59 +42,68 @@ class StoreOfTheDayFragment : Fragment() {
             container,
             false
         )
-        getStores()
+
+        if (args.isFavorites) {
+            getFavoriteStores()
+        } else {
+            getAllStores()
+        }
         handler = Handler()
 
         binding.btnRandomize.setOnClickListener {
             onRandomizeClick()
         }
-        binding.btnChoose.setOnClickListener {
-            onChooseClick()
-        }
-        binding.textStore.text = stores.random()
         return binding.root
     }
 
-    private fun getStores() {
-        val pinoy = resources.getStringArray(R.array.pinoy_resto) ?: arrayOf()
-        val korean = resources.getStringArray(R.array.korean) ?: arrayOf()
-        val japanese = resources.getStringArray(R.array.japanese_resto) ?: arrayOf()
-        val american = resources.getStringArray(R.array.american) ?: arrayOf()
-        val cafe = resources.getStringArray(R.array.cafe) ?: arrayOf()
+    private fun getAllStores() {
+        viewModel.stores.observe(viewLifecycleOwner, Observer { allStore ->
+            allStore?.let { stores ->
+                setStores(stores)
+            }
+        })
+    }
 
-        stores = stores.plus(pinoy)
-        stores = stores.plus(korean)
-        stores = stores.plus(japanese)
-        stores = stores.plus(american)
-        stores = stores.plus(cafe)
+    private fun getFavoriteStores() {
+        viewModel.favorites.observe(viewLifecycleOwner, Observer { favoriteStores ->
+            favoriteStores?.let { stores ->
+                setStores(stores)
+            }
+        })
+    }
+
+    private fun setStores(stores: List<Store>) {
+        val storeNames = stores.map { store ->
+            store.name
+        }
+        this.stores = storeNames.toTypedArray()
+        onRandomizeClick()
     }
 
     private fun onRandomizeClick() {
-        Thread(Runnable {
-            var i = 0
-            while (i < 20) {
-                val store = stores.random()
-                val img = arrayOf(
-                    R.drawable.ic_dice_1,
-                    R.drawable.ic_dice_2,
-                    R.drawable.ic_dice_3,
-                    R.drawable.ic_dice_4,
-                    R.drawable.ic_dice_5
-                )
-                Thread.sleep(Constants.Duration.randomize)
-                handler?.post {
-                    binding.textStore.text = store
-                    binding.imgStore.setImageResource(img.random())
-                    val rnd = Random()
-                    val color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
-                    binding.imgStore.setColorFilter(color)
+        if (stores.isNotEmpty()) {
+            Thread(Runnable {
+                var i = 0
+                while (i < 20) {
+                    val store = stores.random()
+                    val img = arrayOf(
+                        R.drawable.ic_dice_1,
+                        R.drawable.ic_dice_2,
+                        R.drawable.ic_dice_3,
+                        R.drawable.ic_dice_4,
+                        R.drawable.ic_dice_5
+                    )
+                    Thread.sleep(Constants.Duration.randomize)
+                    handler?.post {
+                        binding.textStore.text = store
+                        binding.imgStore.setImageResource(img.random())
+                        val rnd = Random()
+                        val color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
+                        binding.imgStore.setColorFilter(color)
+                    }
+                    i++
                 }
-                i++
-            }
-        }).start()
-    }
-
-    private fun onChooseClick() {
-        findNavController().navigate(R.id.action_storeOfTheDay_to_chooseCategory)
+            }).start()
+        }
     }
 }

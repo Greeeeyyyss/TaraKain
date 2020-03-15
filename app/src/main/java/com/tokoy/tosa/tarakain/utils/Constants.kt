@@ -5,4 +5,8 @@ class Constants {
         val splash = 3000L
         val randomize = 100L
     }
+
+    object Key {
+        val isFavorites = "isFavorites"
+    }
 }

@@ -14,6 +14,7 @@ import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.databinding.ActivityMainBinding
 import com.tokoy.tosa.tarakain.db.models.Category
 import com.tokoy.tosa.tarakain.db.models.Store
+import com.tokoy.tosa.tarakain.utils.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
@@ -28,19 +29,17 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_store_of_the_day -> {
-                    binding.toolbarTitle.text = getString(R.string.store_of_the_day)
+                    val bundle = Bundle()
+                    bundle.putBoolean(Constants.Key.isFavorites, false)
+                    navController().navigate(R.id.storeOfTheDayFragment, bundle)
                 }
                 R.id.nav_favorite_stores -> {
-                    binding.toolbarTitle.text = getString(R.string.favorites_stores)
-                }
-                R.id.nav_featured_stores -> {
-                    binding.toolbarTitle.text = getString(R.string.featured_stores)
-                }
-                R.id.nav_promos -> {
-                    binding.toolbarTitle.text = getString(R.string.promos)
+                    val bundle = Bundle()
+                    bundle.putBoolean(Constants.Key.isFavorites, true)
+                    navController().navigate(R.id.storeOfTheDayFragment, bundle)
                 }
                 R.id.nav_heads_or_tails -> {
-                    binding.toolbarTitle.text = getString(R.string.heads_or_tails)
+                    navController().navigate(R.id.headsOrTailsFragment)
                 }
             }
             menuItem.isChecked = true
@@ -61,7 +60,13 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
         when (destination.id) {
             R.id.storeOfTheDayFragment -> {
-                binding.toolbarTitle.text = getString(R.string.store_of_the_day)
+                arguments?.let {
+                    if (it.getBoolean(Constants.Key.isFavorites)) {
+                        binding.toolbarTitle.text = getString(R.string.favorites_stores)
+                    } else {
+                        binding.toolbarTitle.text = getString(R.string.store_of_the_day)
+                    }
+                }
                 binding.toolbarLeftButton.setImageResource(R.drawable.ic_menu)
                 binding.toolbarLeftButton.setOnClickListener {
                     openDrawer()
@@ -90,31 +95,10 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                     // TODO add category screen
                 }
             }
-
+            R.id.headsOrTailsFragment -> {
+                binding.toolbarTitle.text = getString(R.string.heads_or_tails)
+            }
         }
-    }
-
-    fun getCategories(): List<Category> {
-        return listOf(
-            Category(1, "Filipino"),
-            Category(2, "American"),
-            Category(3, "Japanese"),
-            Category(4, "Korean"),
-            Category(5, "Chinese"),
-            Category(6, "Italian"),
-            Category(7, "Spanish"),
-            Category(8, "Mexican"),
-            Category(9, "Thai"),
-            Category(10, "Cafe"),
-            Category(11, "Fast Food"),
-            Category(12, "Buffet"),
-            Category(13, "Pub"),
-            Category(14, "Fine Dining")
-        )
-    }
-
-    fun getStores(): List<Store> {
-        return listOf()
     }
 
     private fun navController(): NavController {
