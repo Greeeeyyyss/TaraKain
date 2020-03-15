@@ -39,4 +39,8 @@
             android:id="@+id/chooseCategoryFragment"
             android:name="com.tokoy.tosa.tarakain.ui.ChooseCategoryFragment"
             android:label="ChooseCategoryFragment" />
+    <fragment
+        android:id="@+id/storeListFragment"
+        android:name="com.tokoy.tosa.tarakain.ui.StoreListFragment"
+        android:label="StoreListFragment" />
 </navigation>

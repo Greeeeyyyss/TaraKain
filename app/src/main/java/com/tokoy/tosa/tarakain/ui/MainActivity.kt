@@ -98,6 +98,12 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             R.id.headsOrTailsFragment -> {
                 binding.toolbarTitle.text = getString(R.string.heads_or_tails)
             }
+            R.id.storeListFragment -> {
+                binding.toolbarTitle.text = getString(R.string.my_stores)
+                binding.toolbarLeftButton.setOnClickListener {
+                    navController().popBackStack()
+                }
+            }
         }
     }
 

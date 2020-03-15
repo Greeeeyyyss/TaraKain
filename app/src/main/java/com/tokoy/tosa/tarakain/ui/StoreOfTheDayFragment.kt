@@ -72,12 +72,14 @@ class StoreOfTheDayFragment : Fragment() {
         })
     }
 
-    private fun setStores(stores: List<Store>) {
-        val storeNames = stores.map { store ->
+    private fun setStores(storeList: List<Store>) {
+        val storeNames = storeList.map { store ->
             store.name
         }
-        this.stores = storeNames.toTypedArray()
-        onRandomizeClick()
+        stores = storeNames.toTypedArray()
+        if (stores.isNotEmpty()) {
+            binding.textStore.text = stores.random()
+        }
     }
 
     private fun onRandomizeClick() {

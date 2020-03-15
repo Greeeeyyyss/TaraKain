@@ -15,7 +15,9 @@ import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.databinding.FragmentAddStoreBinding
 import com.tokoy.tosa.tarakain.db.models.Category
 import com.tokoy.tosa.tarakain.db.models.Store
+import com.tokoy.tosa.tarakain.utils.Constants
 import com.tokoy.tosa.tarakain.utils.InjectorUtils
+import com.tokoy.tosa.tarakain.utils.hideKeyboard
 import com.tokoy.tosa.tarakain.viewmodels.StoreViewModel
 
 class AddStoreFragment : Fragment(), AdapterView.OnItemSelectedListener {
@@ -56,17 +58,15 @@ class AddStoreFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     private fun onAddStoreClick() {
         val name = binding.storeName.text?.toString() ?: return
-        val store = Store(
-            name = name,
-            isFavorite = binding.addToFavorites.isChecked
-        )
+        val store = Store(name = name, isFavorite = binding.addToFavorites.isChecked)
         if (storeCategory?.isNotEmpty() == true) {
             store.category = Category(name = storeCategory ?: "")
         }
+        hideKeyboard()
         viewModel.addStore(store)
 
         Toast.makeText(context, "Store saved successfully", Toast.LENGTH_SHORT).show()
-        findNavController().popBackStack()
+        findNavController().navigate(R.id.storeListFragment)
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
