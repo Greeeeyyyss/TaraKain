@@ -24,11 +24,9 @@ class StoreOfTheDayFragment : Fragment() {
     private lateinit var binding: FragmentStoreOfTheDayBinding
     private var stores = arrayOf<String>()
     private var handler: Handler?  = null
-
     private val viewModel: StoreViewModel by viewModels {
         InjectorUtils.provideStoreViewModelFactory(requireContext())
     }
-
     private val args: StoreOfTheDayFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -43,16 +41,23 @@ class StoreOfTheDayFragment : Fragment() {
             false
         )
 
-        if (args.isFavorites) {
-            getFavoriteStores()
-        } else {
-            getAllStores()
-        }
+        binding.isFavorites = args.isFavorites
+
         handler = Handler()
 
         binding.btnRandomize.setOnClickListener {
             onRandomizeClick()
         }
+        binding.btnCheckStores.setOnClickListener {
+            onCheckStoresClick()
+        }
+
+        if (args.isFavorites) {
+            getFavoriteStores()
+        } else {
+            getAllStores()
+        }
+
         return binding.root
     }
 
@@ -107,5 +112,11 @@ class StoreOfTheDayFragment : Fragment() {
                 }
             }).start()
         }
+    }
+
+    private fun onCheckStoresClick() {
+        val bundle = Bundle()
+        bundle.putBoolean(Constants.Key.isFavorites, args.isFavorites)
+        findNavController().navigate(R.id.storeListFragment, bundle)
     }
 }

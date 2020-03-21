@@ -8,6 +8,8 @@
     <string name="promos">Promos</string>
     <string name="choose">Choose</string>
     <string name="randomize">Randomize</string>
+    <string name="check_stores">Check Stores</string>
+    <string name="check_favorites">Check Favorites</string>
 
     <string name="choose_category">Choose a category</string>
     <string name="popular_kainan">Popular Kainan</string>
@@ -16,6 +18,7 @@
     <string name="my_favorites">My Favorites</string>
     <string name="faqs">FAQs</string>
     <string name="contact_support">Contact Support</string>
+    <string name="store_saved_successful">Store saved successfully!</string>
 
     <!-- Categories -->
 

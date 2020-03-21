@@ -42,5 +42,10 @@
     <fragment
         android:id="@+id/storeListFragment"
         android:name="com.tokoy.tosa.tarakain.ui.StoreListFragment"
-        android:label="StoreListFragment" />
+        android:label="StoreListFragment">
+        <argument
+                android:name="isFavorites"
+                android:defaultValue="false"
+                app:argType="boolean" />
+    </fragment>
 </navigation>

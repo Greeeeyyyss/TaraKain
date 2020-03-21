@@ -9,6 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tokoy.tosa.tarakain.R
@@ -23,8 +25,8 @@ class StoreListFragment : Fragment() {
     private val viewModel: StoreViewModel by viewModels {
         InjectorUtils.provideStoreViewModelFactory(requireContext())
     }
-
     private var storeListAdapter: StoreListAdapter? = null
+    private val args: StoreListFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,16 +40,30 @@ class StoreListFragment : Fragment() {
             false
         )
         storeListAdapter = StoreListAdapter()
+        storeListAdapter?.onStoreItemClick = { store ->
+            findNavController().navigate(R.id.addStoreFragment)
+        }
         binding.recyclerview.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = storeListAdapter
         }
-        getStores()
+        if (args.isFavorites) {
+            getFavoriteStores()
+        } else {
+            getAllStores()
+        }
         return binding.root
     }
 
-    private fun getStores() {
+    private fun getAllStores() {
         viewModel.stores.observe(viewLifecycleOwner, Observer { stores ->
+            storeListAdapter?.setStores(stores)
+            storeListAdapter?.notifyDataSetChanged()
+        })
+    }
+
+    private fun getFavoriteStores() {
+        viewModel.favorites.observe(viewLifecycleOwner, Observer { stores ->
             storeListAdapter?.setStores(stores)
             storeListAdapter?.notifyDataSetChanged()
         })
@@ -56,15 +72,22 @@ class StoreListFragment : Fragment() {
 
 class StoreListAdapter : RecyclerView.Adapter<StoreListAdapter.StoreListViewHolder>() {
     private var stores: List<Store> = mutableListOf()
+    var onStoreItemClick: (Store) -> Unit = {}
 
     fun setStores(stores: List<Store>) {
         this.stores = stores
     }
 
-    class StoreListViewHolder(val binding: ViewStoreItemBinding): RecyclerView.ViewHolder(binding.root) {
+    class StoreListViewHolder(
+        val binding: ViewStoreItemBinding,
+        val onStoreItemClick: (Store) -> Unit
+    ): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(store: Store) {
             binding.store = store
+            binding.layoutStoreItem.setOnClickListener {
+                onStoreItemClick.invoke(store)
+            }
             binding.executePendingBindings()
         }
     }
@@ -72,7 +95,7 @@ class StoreListAdapter : RecyclerView.Adapter<StoreListAdapter.StoreListViewHold
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoreListViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ViewStoreItemBinding.inflate(layoutInflater, parent, false)
-        return StoreListViewHolder(binding)
+        return StoreListViewHolder(binding, onStoreItemClick)
     }
 
     override fun getItemCount(): Int = stores.size

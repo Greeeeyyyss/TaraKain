@@ -1,37 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
                 name="store"
                 type="com.tokoy.tosa.tarakain.db.models.Store" />
     </data>
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_store_item"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp">
+
         <TextView
                 android:id="@+id/text_store_name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:textSize="18sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:text="@{store.name}"
-                tools:text="Tokyo Tokyo" />
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/text_store_category"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/store" />
+
         <TextView
                 android:id="@+id/text_store_category"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@{store.category.name}"
+                android:textColor="@android:color/black"
+                app:layout_constraintBottom_toTopOf="@id/view_divider"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="@string/choose_category" />
+
+        <View
+                android:id="@+id/view_divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@color/colorPrimaryDark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:text="@{store.category.name}"
-                tools:text="Japanese" />
-        <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="4dp"
-                android:background="@color/colorPrimaryDark"/>
-    </LinearLayout>
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.80" />
+
+        <ImageView
+                android:id="@+id/img_favorite"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/add_favorite"
+                android:src="@{store.favorite ? @drawable/ic_favorite_selected: @drawable/ic_favorite_unselected}"
+                app:layout_constraintBottom_toTopOf="@+id/view_divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guideline"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_favorite_selected"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

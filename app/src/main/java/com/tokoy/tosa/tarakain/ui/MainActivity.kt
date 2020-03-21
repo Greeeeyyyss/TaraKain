@@ -99,7 +99,15 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                 binding.toolbarTitle.text = getString(R.string.heads_or_tails)
             }
             R.id.storeListFragment -> {
-                binding.toolbarTitle.text = getString(R.string.my_stores)
+                arguments?.let {
+                    if (it.getBoolean(Constants.Key.isFavorites)) {
+                        binding.toolbarTitle.text = getString(R.string.favorites_stores)
+                    } else {
+                        binding.toolbarTitle.text = getString(R.string.my_stores)
+                    }
+                }
+                binding.toolbarLeftButton.setImageResource(R.drawable.ic_back)
+                binding.toolbarRightButton.visibility = View.GONE
                 binding.toolbarLeftButton.setOnClickListener {
                     navController().popBackStack()
                 }

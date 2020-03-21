@@ -62,10 +62,14 @@ class AddStoreFragment : Fragment(), AdapterView.OnItemSelectedListener {
         if (storeCategory?.isNotEmpty() == true) {
             store.category = Category(name = storeCategory ?: "")
         }
-        hideKeyboard()
         viewModel.addStore(store)
 
-        Toast.makeText(context, "Store saved successfully", Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            context,
+            getString(R.string.store_saved_successful),
+            Toast.LENGTH_SHORT
+        ).show()
+        hideKeyboard()
         findNavController().navigate(R.id.storeListFragment)
     }
 
