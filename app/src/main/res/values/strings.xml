@@ -42,6 +42,8 @@
     <string name="done">Done</string>
     <string name="store">Store</string>
     <string name="add_store">Add Store</string>
+    <string name="edit_store">Edit Store</string>
+    <string name="save">Save</string>
     <string name="add_favorite">Add To Favorites</string>
     <string name="min_price">Minimum Price</string>
     <string name="max_price">Maximum Price</string>

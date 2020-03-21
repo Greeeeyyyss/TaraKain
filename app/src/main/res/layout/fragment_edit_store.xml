@@ -2,8 +2,10 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:android="http://schemas.android.com/apk/res/android">
-
     <data>
+        <variable
+                name="store"
+                type="com.tokoy.tosa.tarakain.db.models.Store" />
         <variable
                 name="viewModel"
                 type="com.tokoy.tosa.tarakain.viewmodels.CategoryViewModel" />
@@ -15,7 +17,7 @@
             android:layout_marginTop="@dimen/toolbar_height">
 
         <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
+                android:id="@+id/textInputLayout_store"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -29,39 +31,12 @@
                     android:id="@+id/store_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@={store.name}"
                     android:hint="@string/store" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-                android:id="@+id/btn_add_store"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/add_store"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_to_favorites" />
-
-        <CheckBox
-                android:id="@+id/add_to_favorites"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/add_favorite"
-                android:button="@drawable/checkbox_favorite"
-                android:paddingEnd="20dp"
-                app:layout_constraintEnd_toStartOf="@+id/_center"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
-
         <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout2"
+                android:id="@+id/textInputLayout_category"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -69,7 +44,7 @@
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout_store">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInput_category"
@@ -92,7 +67,7 @@
                 android:spinnerMode="dialog"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textInputLayout"/>
+                app:layout_constraintTop_toBottomOf="@id/textInputLayout_store"/>
 
         <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/_center"
@@ -101,39 +76,34 @@
                 app:layout_constraintGuide_percent="0.5"
                 android:orientation="vertical" />
 
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout3"
+        <CheckBox
+                android:id="@+id/add_to_favorites"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:visibility="gone"
+                android:text="@string/add_favorite"
+                android:button="@drawable/checkbox_favorite"
+                android:paddingEnd="20dp"
+                android:checked="@={store.favorite}"
                 app:layout_constraintEnd_toStartOf="@+id/_center"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+                app:layout_constraintTop_toBottomOf="@id/spinner" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/min_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/min_price" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
+        <Button
+                android:id="@+id/btn_save"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:visibility="gone"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/save"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/_center"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
-
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/max_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/max_price" />
-        </com.google.android.material.textfield.TextInputLayout>
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_to_favorites" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

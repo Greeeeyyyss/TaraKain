@@ -112,6 +112,13 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                     navController().popBackStack()
                 }
             }
+            R.id.editStoreFragment -> {
+                binding.toolbarTitle.text = getString(R.string.edit_store)
+                binding.toolbarLeftButton.setImageResource(R.drawable.ic_back)
+                binding.toolbarLeftButton.setOnClickListener {
+                    navController().popBackStack()
+                }
+            }
         }
     }
 

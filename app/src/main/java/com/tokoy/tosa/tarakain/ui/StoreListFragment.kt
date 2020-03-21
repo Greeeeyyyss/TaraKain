@@ -16,7 +16,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.databinding.FragmentStoreListBinding
 import com.tokoy.tosa.tarakain.databinding.ViewStoreItemBinding
+import com.tokoy.tosa.tarakain.db.dao.TKConverter
 import com.tokoy.tosa.tarakain.db.models.Store
+import com.tokoy.tosa.tarakain.utils.Constants
 import com.tokoy.tosa.tarakain.utils.InjectorUtils
 import com.tokoy.tosa.tarakain.viewmodels.StoreViewModel
 
@@ -41,7 +43,9 @@ class StoreListFragment : Fragment() {
         )
         storeListAdapter = StoreListAdapter()
         storeListAdapter?.onStoreItemClick = { store ->
-            findNavController().navigate(R.id.addStoreFragment)
+            val bundle = Bundle()
+            bundle.putString(Constants.Key.store, TKConverter.storeToString(store))
+            findNavController().navigate(R.id.editStoreFragment, bundle)
         }
         binding.recyclerview.apply {
             layoutManager = LinearLayoutManager(requireContext())
@@ -56,6 +60,7 @@ class StoreListFragment : Fragment() {
     }
 
     private fun getAllStores() {
+        // TODO display empty state
         viewModel.stores.observe(viewLifecycleOwner, Observer { stores ->
             storeListAdapter?.setStores(stores)
             storeListAdapter?.notifyDataSetChanged()

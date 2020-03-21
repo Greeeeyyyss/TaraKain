@@ -19,6 +19,10 @@ class StoreViewModel internal constructor(
         GlobalScope.launch(Dispatchers.IO) {  storeRepo.addStore(store) }
     }
 
+    fun editStore(store: Store) {
+
+    }
+
     fun addToFavorites(storeId: Int) = storeRepo.addToFavorites(storeId)
 
     fun removeFromFavorites(storeId: Int) = storeRepo.removeFromFavorites(storeId)

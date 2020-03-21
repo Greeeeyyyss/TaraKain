@@ -48,4 +48,12 @@
                 android:defaultValue="false"
                 app:argType="boolean" />
     </fragment>
+    <fragment
+        android:id="@+id/editStoreFragment"
+        android:name="com.tokoy.tosa.tarakain.ui.EditStoreFragment"
+        android:label="EditStoreFragment">
+        <argument
+            android:name="store"
+            app:argType="string"/>
+    </fragment>
 </navigation>

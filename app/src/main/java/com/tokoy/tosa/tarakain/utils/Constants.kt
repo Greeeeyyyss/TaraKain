@@ -8,5 +8,6 @@ class Constants {
 
     object Key {
         val isFavorites = "isFavorites"
+        val store = "store"
     }
 }
