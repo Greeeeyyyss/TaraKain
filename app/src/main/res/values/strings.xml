@@ -8,6 +8,7 @@
     <string name="promos">Promos</string>
     <string name="choose">Choose</string>
     <string name="randomize">Randomize</string>
+    <string name="flip">Flip</string>
     <string name="check_stores">Check Stores</string>
     <string name="check_favorites">Check Favorites</string>
 
@@ -273,5 +274,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="empty_string">  </string>
+    <string name="store_2">Store 2</string>
+    <string name="tails">Tails</string>
+    <string name="store_1">Store 1</string>
+    <string name="heads">Heads</string>
 
 </resources>

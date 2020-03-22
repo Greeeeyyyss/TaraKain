@@ -97,6 +97,15 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             }
             R.id.headsOrTailsFragment -> {
                 binding.toolbarTitle.text = getString(R.string.heads_or_tails)
+                binding.toolbarLeftButton.setImageResource(R.drawable.ic_menu)
+                binding.toolbarLeftButton.setOnClickListener {
+                    openDrawer()
+                }
+                binding.toolbarRightButton.visibility = View.VISIBLE
+                binding.toolbarRightButton.setOnClickListener {
+                    navController().navigate(R.id.action_headsOrTails_to_addStore)
+                }
+
             }
             R.id.storeListFragment -> {
                 arguments?.let {

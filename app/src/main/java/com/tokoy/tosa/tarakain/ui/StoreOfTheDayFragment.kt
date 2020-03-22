@@ -1,6 +1,5 @@
 package com.tokoy.tosa.tarakain.ui
 
-import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -17,8 +16,8 @@ import com.tokoy.tosa.tarakain.databinding.FragmentStoreOfTheDayBinding
 import com.tokoy.tosa.tarakain.db.models.Store
 import com.tokoy.tosa.tarakain.utils.Constants
 import com.tokoy.tosa.tarakain.utils.InjectorUtils
+import com.tokoy.tosa.tarakain.utils.getRandomColor
 import com.tokoy.tosa.tarakain.viewmodels.StoreViewModel
-import java.util.Random
 
 class StoreOfTheDayFragment : Fragment() {
     private lateinit var binding: FragmentStoreOfTheDayBinding
@@ -104,9 +103,7 @@ class StoreOfTheDayFragment : Fragment() {
                     handler?.post {
                         binding.textStore.text = store
                         binding.imgStore.setImageResource(img.random())
-                        val rnd = Random()
-                        val color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
-                        binding.imgStore.setColorFilter(color)
+                        binding.imgStore.setColorFilter(getRandomColor())
                     }
                     i++
                 }

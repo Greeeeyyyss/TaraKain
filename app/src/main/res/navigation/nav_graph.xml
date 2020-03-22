@@ -30,7 +30,11 @@
     <fragment
         android:id="@+id/headsOrTailsFragment"
         android:name="com.tokoy.tosa.tarakain.ui.HeadsOrTailsFragment"
-        android:label="Heads Or Tails" />
+        android:label="Heads Or Tails">
+        <action
+            android:id="@+id/action_headsOrTails_to_addStore"
+            app:destination="@id/addStoreFragment" />
+    </fragment>
     <fragment
             android:id="@+id/addStoreFragment"
             android:name="com.tokoy.tosa.tarakain.ui.AddStoreFragment"
