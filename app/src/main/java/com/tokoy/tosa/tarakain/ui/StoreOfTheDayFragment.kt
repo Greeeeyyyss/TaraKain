@@ -102,8 +102,8 @@ class StoreOfTheDayFragment : Fragment() {
                     Thread.sleep(Constants.Duration.randomize)
                     handler?.post {
                         binding.textStore.text = store
-                        binding.imgStore.setImageResource(img.random())
-                        binding.imgStore.setColorFilter(getRandomColor())
+                        binding.imgDice.setImageResource(img.random())
+                        binding.imgDice.setColorFilter(getRandomColor())
                     }
                     i++
                 }

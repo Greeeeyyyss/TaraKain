@@ -14,7 +14,6 @@ import androidx.lifecycle.Observer
 import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.databinding.FragmentHeadsOrTailsBinding
 import com.tokoy.tosa.tarakain.utils.InjectorUtils
-import com.tokoy.tosa.tarakain.utils.getRandomColor
 import com.tokoy.tosa.tarakain.viewmodels.StoreViewModel
 import java.util.*
 
@@ -66,17 +65,13 @@ class HeadsOrTailsFragment : Fragment() {
                 }
 
                 override fun onAnimationEnd(animation: Animation?) {
-
-                    val bool = Random().nextBoolean()
-                    if (bool) {
-                        binding.imgStore.setImageResource(R.drawable.ic_dice_5)
+                    if (Random().nextBoolean()) {
+                        binding.imgCoin.setImageResource(R.drawable.ic_coin_heads)
                         binding.textStore.text = heads
                     } else {
-                        binding.imgStore.setImageResource(R.drawable.ic_dice_1)
+                        binding.imgCoin.setImageResource(R.drawable.ic_coin_tails)
                         binding.textStore.text = tails
                     }
-
-                    binding.imgStore.setColorFilter(getRandomColor())
 
                     val fadeIn = AlphaAnimation(0f, 1f)
                     fadeIn.interpolator = DecelerateInterpolator()
@@ -84,15 +79,16 @@ class HeadsOrTailsFragment : Fragment() {
                     fadeIn.fillAfter = true
 
                     binding.textStore.visibility = View.VISIBLE
-                    binding.imgStore.startAnimation(fadeIn)
+                    binding.btnFlip.alpha = 1f
+                    binding.imgCoin.startAnimation(fadeIn)
                 }
 
                 override fun onAnimationStart(animation: Animation?) {
+                    binding.btnFlip.alpha = 0.7f
                 }
-
             })
 
-            binding.imgStore.startAnimation(fadeOut)
+            binding.imgCoin.startAnimation(fadeOut)
         }
     }
 }

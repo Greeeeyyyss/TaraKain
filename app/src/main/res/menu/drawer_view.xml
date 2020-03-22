@@ -10,6 +10,6 @@
             android:title="@string/favorites_stores"/>
 
     <item android:id="@+id/nav_heads_or_tails"
-            android:icon="@drawable/ic_flip"
+            android:icon="@drawable/ic_coin_tails"
             android:title="@string/heads_or_tails" />
 </menu>
