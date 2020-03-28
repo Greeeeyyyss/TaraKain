@@ -49,7 +49,7 @@ class AddStoreFragment : Fragment() {
             if (storeAdded) {
                 hideKeyboard()
                 showSnackbar(getString(R.string.store_saved_successful))
-                findNavController().navigate(R.id.storeListFragment)
+                findNavController().navigate(R.id.action_addStore_to_storeList)
             }
         })
     }

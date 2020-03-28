@@ -42,7 +42,7 @@ class StoreListFragment : Fragment() {
         storeListAdapter?.onStoreItemClick = { store ->
             val bundle = Bundle()
             bundle.putString(Constants.Key.store, TKConverter.storeToString(store))
-            findNavController().navigate(R.id.editStoreFragment, bundle)
+            findNavController().navigate(R.id.action_storeList_to_editStore, bundle)
         }
         binding.recyclerview.apply {
             layoutManager = LinearLayoutManager(requireContext())

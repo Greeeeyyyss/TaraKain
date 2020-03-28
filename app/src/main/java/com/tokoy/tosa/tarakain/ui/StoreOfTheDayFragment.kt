@@ -79,7 +79,7 @@ class StoreOfTheDayFragment : Fragment() {
             if (it) {
                 val bundle = Bundle()
                 bundle.putBoolean(Constants.Key.isFavorites, args.isFavorites)
-                findNavController().navigate(R.id.storeListFragment, bundle)
+                findNavController().navigate(R.id.action_storeOfTheDay_to_storeList, bundle)
             }
         })
     }
