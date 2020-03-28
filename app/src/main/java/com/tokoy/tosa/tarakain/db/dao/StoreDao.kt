@@ -15,10 +15,10 @@ interface StoreDao {
     @Query("UPDATE Store SET isFavorite = 0 WHERE id = :id")
     fun removeFromFavorite(id: Int)
 
-    @Query("SELECT * FROM Store")
+    @Query("SELECT * FROM Store ORDER BY name")
     fun getAll(): LiveData<List<Store>>
 
-    @Query("SELECT * FROM Store WHERE isFavorite = 1")
+    @Query("SELECT * FROM Store WHERE isFavorite = 1 ORDER BY name")
     fun getAllFavorites(): LiveData<List<Store>>
 
     @Delete

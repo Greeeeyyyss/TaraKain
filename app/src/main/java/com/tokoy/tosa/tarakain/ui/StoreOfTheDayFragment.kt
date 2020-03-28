@@ -13,20 +13,27 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.databinding.FragmentStoreOfTheDayBinding
-import com.tokoy.tosa.tarakain.db.models.Store
 import com.tokoy.tosa.tarakain.utils.Constants
+import com.tokoy.tosa.tarakain.utils.EventObserver
 import com.tokoy.tosa.tarakain.utils.InjectorUtils
 import com.tokoy.tosa.tarakain.utils.getRandomColor
 import com.tokoy.tosa.tarakain.viewmodels.StoreOfTheDayViewModel
 
 class StoreOfTheDayFragment : Fragment() {
     private lateinit var binding: FragmentStoreOfTheDayBinding
-    private var stores = arrayOf<String>()
     private var handler: Handler?  = null
     private val viewModel: StoreOfTheDayViewModel by viewModels {
         InjectorUtils.provideStoreOfTheDayViewModelFactory(requireContext())
     }
     private val args: StoreOfTheDayFragmentArgs by navArgs()
+
+    private val dices = arrayOf(
+        R.drawable.ic_dice_1,
+        R.drawable.ic_dice_2,
+        R.drawable.ic_dice_3,
+        R.drawable.ic_dice_4,
+        R.drawable.ic_dice_5
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,80 +47,57 @@ class StoreOfTheDayFragment : Fragment() {
             false
         )
 
-        binding.isFavorites = args.isFavorites
+        viewModel.isFavorites = args.isFavorites
+        binding.viewModel = viewModel
 
         handler = Handler()
 
-        binding.btnRandomize.setOnClickListener {
-            onRandomizeClick()
-        }
-        binding.btnCheckStores.setOnClickListener {
-            onCheckStoresClick()
-        }
-
-        if (args.isFavorites) {
-            getFavoriteStores()
-        } else {
-            getAllStores()
-        }
-
+        setupObservers()
         return binding.root
     }
 
-    private fun getAllStores() {
-        viewModel.stores.observe(viewLifecycleOwner, Observer { allStore ->
-            allStore?.let { stores ->
-                setStores(stores)
+    private fun setupObservers() {
+        viewModel.getStores().observe(viewLifecycleOwner, Observer { storeList ->
+            viewModel.storeList = storeList
+
+            if (storeList.isEmpty()) {
+                // TODO empty state
+            } else {
+                val store = viewModel.getRandomStore()
+                binding.textStore.text = store.name
+                binding.textCategory.text = store.category?.name
             }
         })
-    }
 
-    private fun getFavoriteStores() {
-        viewModel.favorites.observe(viewLifecycleOwner, Observer { favoriteStores ->
-            favoriteStores?.let { stores ->
-                setStores(stores)
+        viewModel.onRandomizedEvent.observe(viewLifecycleOwner, EventObserver {
+            if (it) {
+                onRandomizeClick()
             }
         })
-    }
 
-    private fun setStores(storeList: List<Store>) {
-        val storeNames = storeList.map { store ->
-            store.name
-        }
-        stores = storeNames.toTypedArray()
-        if (stores.isNotEmpty()) {
-            binding.textStore.text = stores.random()
-        }
+        viewModel.onCheckStoresEvent.observe(viewLifecycleOwner, EventObserver {
+            if (it) {
+                val bundle = Bundle()
+                bundle.putBoolean(Constants.Key.isFavorites, args.isFavorites)
+                findNavController().navigate(R.id.storeListFragment, bundle)
+            }
+        })
     }
 
     private fun onRandomizeClick() {
-        if (stores.isNotEmpty()) {
-            Thread(Runnable {
-                var i = 0
-                while (i < 20) {
-                    val store = stores.random()
-                    val img = arrayOf(
-                        R.drawable.ic_dice_1,
-                        R.drawable.ic_dice_2,
-                        R.drawable.ic_dice_3,
-                        R.drawable.ic_dice_4,
-                        R.drawable.ic_dice_5
-                    )
-                    Thread.sleep(Constants.Duration.randomize)
-                    handler?.post {
-                        binding.textStore.text = store
-                        binding.imgDice.setImageResource(img.random())
-                        binding.imgDice.setColorFilter(getRandomColor())
-                    }
-                    i++
+        Thread(Runnable {
+            var i = 0
+            while (i < 20) {
+                val store = viewModel.getRandomStore()
+                Thread.sleep(Constants.Duration.randomize)
+                handler?.post {
+                    binding.textStore.text = store.name
+                    binding.textCategory.text = store.category?.name
+                    binding.imgDice.setImageResource(dices.random())
+                    binding.imgDice.setColorFilter(getRandomColor())
                 }
-            }).start()
-        }
-    }
-
-    private fun onCheckStoresClick() {
-        val bundle = Bundle()
-        bundle.putBoolean(Constants.Key.isFavorites, args.isFavorites)
-        findNavController().navigate(R.id.storeListFragment, bundle)
+                i++
+            }
+        }).start()
     }
 }

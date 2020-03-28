@@ -4,9 +4,6 @@
         xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
-                name="store"
-                type="com.tokoy.tosa.tarakain.db.models.Store" />
-        <variable
                 name="viewModel"
                 type="com.tokoy.tosa.tarakain.viewmodels.EditStoreViewModel" />
     </data>
@@ -31,7 +28,7 @@
                     android:id="@+id/store_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@={store.name}"
+                    android:text="@={viewModel.store.name}"
                     android:hint="@string/store" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,7 +82,7 @@
                 android:text="@string/add_favorite"
                 android:button="@drawable/checkbox_favorite"
                 android:paddingEnd="20dp"
-                android:checked="@={store.favorite}"
+                android:checked="@={viewModel.store.favorite}"
                 app:layout_constraintEnd_toStartOf="@+id/_center"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/spinner" />
@@ -100,6 +97,7 @@
                 android:background="@color/colorPrimary"
                 android:text="@string/save"
                 android:textColor="@color/white"
+                android:onClick="@{() -> viewModel.updateStore()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"

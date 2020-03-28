@@ -3,7 +3,10 @@ package com.tokoy.tosa.tarakain.utils
 import android.app.Activity
 import android.graphics.Color
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
+import com.tokoy.tosa.tarakain.R
 import java.util.*
 
 fun Fragment.hideKeyboard() {
@@ -20,3 +23,16 @@ fun Fragment.getRandomColor(): Int {
         random.nextInt(256)
     )
 }
+
+fun Fragment.showSnackbar(message: String) {
+    val context = context ?: return
+    val view = this.view ?: return
+    val snackbar = Snackbar.make(
+        view,
+        message,
+        Snackbar.LENGTH_SHORT
+    )
+    snackbar.setBackgroundTint(ContextCompat.getColor(context, R.color.colorPrimary))
+    snackbar.show()
+}
+

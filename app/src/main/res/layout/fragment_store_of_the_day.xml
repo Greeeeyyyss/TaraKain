@@ -5,8 +5,8 @@
 
     <data>
         <variable
-                name="isFavorites"
-                type="Boolean" />
+                name="viewModel"
+                type="com.tokoy.tosa.tarakain.viewmodels.StoreOfTheDayViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,45 +15,51 @@
 
         <TextView
                 android:id="@+id/text_store"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/layout_margin_right"
                 android:layout_marginEnd="16dp"
-                android:text="@string/store_of_the_day"
+                android:text="@{viewModel.chosenStore.name}"
                 android:textSize="30sp"
                 android:textStyle="bold"
+                android:textAlignment="center"
+                android:maxLines="2"
+                android:ellipsize="end"
                 app:layout_constraintBottom_toTopOf="@+id/img_dice"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.50"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Tokyo Tokyo"/>
+                tools:text="Tokyo Tokyo" />
+
+        <TextView
+                android:id="@+id/text_category"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{viewModel.chosenStore.category.name}"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:lines="1"
+                android:ellipsize="end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_store"
+                tools:text="Japanese" />
 
         <ImageView
                 android:id="@+id/img_dice"
                 android:layout_width="221dp"
                 android:layout_height="211dp"
                 android:contentDescription="@string/app_name"
-                android:src="@{isFavorites ? @drawable/ic_dice_3 : @drawable/ic_dice_5}"
+                android:src="@{viewModel.isFavorites ? @drawable/ic_dice_3 : @drawable/ic_dice_5}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintDimensionRatio="16:9"
+                app:layout_constraintDimensionRatio="2:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@drawable/ic_dice_5" />
-
-        <TextView
-                android:id="@+id/text_category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="14dp"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/img_dice"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:text="Japanese" />
 
         <Button
                 android:id="@+id/btn_randomize"
@@ -67,6 +73,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:onClick="@{() -> viewModel.randomize()}"
                 app:layout_constraintBottom_toTopOf="@+id/btn_check_stores"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -79,10 +86,11 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:background="@color/colorPrimaryDark"
-                android:text="@{isFavorites ? @string/check_favorites : @string/check_stores}"
+                android:text="@{viewModel.isFavorites ? @string/check_favorites : @string/check_stores}"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:onClick="@{() -> viewModel.checkStores()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
