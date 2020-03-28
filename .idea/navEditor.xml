@@ -17,6 +17,15 @@
                             <option name="y" value="-7" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_addStore_to_storeList">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -95,6 +104,15 @@
                             <option name="y" value="12" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_storeList_to_editStore">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -115,6 +133,11 @@
                               </value>
                             </entry>
                             <entry key="action_storeOfTheDay_to_chooseCategory">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_storeOfTheDay_to_storeList">
                               <value>
                                 <LayoutPositions />
                               </value>

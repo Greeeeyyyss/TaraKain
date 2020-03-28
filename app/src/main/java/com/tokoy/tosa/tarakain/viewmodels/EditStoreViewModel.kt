@@ -21,8 +21,9 @@ class EditStoreViewModel constructor(
     var categoryNames = listOf<String>()
     var categoryIndex = ObservableField(0)
     var isStoreUpdated = MutableLiveData<Event<Boolean>>()
+    var isStoreDeleted = MutableLiveData<Event<Boolean>>()
 
-    fun isStoreValid() = store.name.isNotBlank()
+    private fun isStoreValid() = store.name.isNotBlank()
 
     fun getCategories() = categoryRepo.getCategories()
 
@@ -34,5 +35,12 @@ class EditStoreViewModel constructor(
             }
             isStoreUpdated.value = Event(true)
         }
+    }
+
+    fun deleteStore() {
+        viewModelScope.launch {
+            storeRepo.removeStore(store)
+        }
+        isStoreDeleted.value = Event(true)
     }
 }

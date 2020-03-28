@@ -62,5 +62,12 @@ class EditStoreFragment : Fragment() {
                 findNavController().popBackStack()
             }
         })
+
+        viewModel.isStoreDeleted.observe(viewLifecycleOwner, EventObserver { storeDeleted ->
+            if (storeDeleted) {
+                showSnackbar(getString(R.string.store_deleted_successful))
+                findNavController().popBackStack()
+            }
+        })
     }
 }

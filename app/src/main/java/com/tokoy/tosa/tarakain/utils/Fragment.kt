@@ -32,7 +32,7 @@ fun Fragment.showSnackbar(message: String) {
         message,
         Snackbar.LENGTH_SHORT
     )
-    snackbar.setBackgroundTint(ContextCompat.getColor(context, R.color.colorPrimary))
+    snackbar.setBackgroundTint(ContextCompat.getColor(context, R.color.colorPrimaryDark))
     snackbar.show()
 }
 

@@ -22,5 +22,5 @@ interface StoreDao {
     fun getAllFavorites(): LiveData<List<Store>>
 
     @Delete
-    fun removeStore(store: Store)
+    suspend fun removeStore(store: Store)
 }

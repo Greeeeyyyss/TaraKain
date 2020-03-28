@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:style="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -34,15 +35,14 @@
 
         <Button
                 android:id="@+id/btn_add_store"
+                style="@style/PrimaryButton"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/add_store"
-                android:textColor="@color/white"
                 android:onClick="@{() -> viewModel.addStore()}"
+                android:text="@string/save"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +57,6 @@
                 android:text="@string/add_favorite"
                 android:checked="@={viewModel.isFavorite}"
                 android:button="@drawable/checkbox_favorite"
-                android:paddingEnd="20dp"
                 app:layout_constraintEnd_toStartOf="@+id/_center"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
@@ -78,7 +77,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=" "
-                    android:hint="@string/choose_category" />
+                    android:hint="@string/choose_category"
+                    style:ignore="HardcodedText" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

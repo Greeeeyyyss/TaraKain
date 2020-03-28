@@ -20,6 +20,7 @@
     <string name="faqs">FAQs</string>
     <string name="contact_support">Contact Support</string>
     <string name="store_saved_successful">Store saved successfully!</string>
+    <string name="store_deleted_successful">Store deleted successfully!</string>
 
     <!-- Categories -->
 
@@ -45,6 +46,7 @@
     <string name="add_store">Add Store</string>
     <string name="edit_store">Edit Store</string>
     <string name="save">Save</string>
+    <string name="delete">Delete</string>
     <string name="add_favorite">Add To Favorites</string>
     <string name="min_price">Minimum Price</string>
     <string name="max_price">Maximum Price</string>
@@ -273,7 +275,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="empty_string">  </string>
     <string name="store_2">Store 2</string>
     <string name="tails">Tails</string>
     <string name="store_1">Store 1</string>
