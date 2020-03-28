@@ -17,19 +17,14 @@ import com.tokoy.tosa.tarakain.db.dao.TKConverter
 import com.tokoy.tosa.tarakain.db.models.Category
 import com.tokoy.tosa.tarakain.utils.InjectorUtils
 import com.tokoy.tosa.tarakain.utils.hideKeyboard
-import com.tokoy.tosa.tarakain.viewmodels.CategoryViewModel
-import com.tokoy.tosa.tarakain.viewmodels.StoreViewModel
+import com.tokoy.tosa.tarakain.viewmodels.EditStoreViewModel
 
 class EditStoreFragment : Fragment() {
     private lateinit var binding: FragmentEditStoreBinding
     private val args: EditStoreFragmentArgs by navArgs()
     private var categoryList: List<Category> = mutableListOf()
-    private val viewModel: StoreViewModel by viewModels {
-        InjectorUtils.provideStoreViewModelFactory(requireContext())
-    }
-
-    private val categoryViewModel: CategoryViewModel by viewModels {
-        InjectorUtils.provideCategoryViewModelFactory(requireContext())
+    private val viewModel: EditStoreViewModel by viewModels {
+        InjectorUtils.provideEditStoreViewModelFactory(requireContext())
     }
 
     override fun onCreateView(
@@ -54,12 +49,12 @@ class EditStoreFragment : Fragment() {
     }
 
     private fun loadCategories() {
-        categoryViewModel.categories.observe(viewLifecycleOwner, Observer { categories ->
+        viewModel.categories.observe(viewLifecycleOwner, Observer { categories ->
             categoryList = categories
-            categoryViewModel.categoryNames = categories.map { it.name }
+            viewModel.categoryNames = categories.map { it.name }
             val index = binding.store?.category?.id ?: 1
-            categoryViewModel.categoryIndex.set(index - 1)
-            binding.viewModel = categoryViewModel
+            viewModel.categoryIndex.set(index - 1)
+            binding.viewModel = viewModel
         })
     }
 
@@ -67,7 +62,7 @@ class EditStoreFragment : Fragment() {
         hideKeyboard()
 
         binding.store?.let { store ->
-            val index = categoryViewModel.categoryIndex.get() ?: 0
+            val index = viewModel.categoryIndex.get() ?: 0
             store.category = categoryList[index]
             viewModel.addStore(store)
             Toast.makeText(

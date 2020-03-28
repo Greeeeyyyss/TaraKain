@@ -6,7 +6,7 @@
     <data>
         <variable
                 name="viewModel"
-                type="com.tokoy.tosa.tarakain.viewmodels.CategoryViewModel" />
+                type="com.tokoy.tosa.tarakain.viewmodels.AddStoreViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

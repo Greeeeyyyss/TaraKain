@@ -8,7 +8,7 @@
                 type="com.tokoy.tosa.tarakain.db.models.Store" />
         <variable
                 name="viewModel"
-                type="com.tokoy.tosa.tarakain.viewmodels.CategoryViewModel" />
+                type="com.tokoy.tosa.tarakain.viewmodels.EditStoreViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

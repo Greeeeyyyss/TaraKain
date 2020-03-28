@@ -4,10 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.tokoy.tosa.tarakain.db.repo.StoreRepo
 
-class StoreViewModelFactory(
-    private val repo: StoreRepo
+@Suppress("UNCHECKED_CAST")
+class HeadsOrTailsViewModelFactory (
+    private val storeRepo: StoreRepo
 ): ViewModelProvider.NewInstanceFactory() {
 
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>) = StoreViewModel(repo) as T
+    override fun <T : ViewModel?> create(modelClass: Class<T>) =
+        HeadsOrTailsViewModel(storeRepo) as T
 }

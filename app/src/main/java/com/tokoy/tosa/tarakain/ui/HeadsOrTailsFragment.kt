@@ -14,13 +14,13 @@ import androidx.lifecycle.Observer
 import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.databinding.FragmentHeadsOrTailsBinding
 import com.tokoy.tosa.tarakain.utils.InjectorUtils
-import com.tokoy.tosa.tarakain.viewmodels.StoreViewModel
+import com.tokoy.tosa.tarakain.viewmodels.HeadsOrTailsViewModel
 import java.util.*
 
 class HeadsOrTailsFragment : Fragment() {
     private lateinit var binding: FragmentHeadsOrTailsBinding
-    private val viewModel: StoreViewModel by viewModels {
-        InjectorUtils.provideStoreViewModelFactory(requireContext())
+    private val viewModel: HeadsOrTailsViewModel by viewModels {
+        InjectorUtils.provideHeadsOrTailsViewModelFactory(requireContext())
     }
 
     override fun onCreateView(

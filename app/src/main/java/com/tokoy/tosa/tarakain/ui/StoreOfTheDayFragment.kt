@@ -17,14 +17,14 @@ import com.tokoy.tosa.tarakain.db.models.Store
 import com.tokoy.tosa.tarakain.utils.Constants
 import com.tokoy.tosa.tarakain.utils.InjectorUtils
 import com.tokoy.tosa.tarakain.utils.getRandomColor
-import com.tokoy.tosa.tarakain.viewmodels.StoreViewModel
+import com.tokoy.tosa.tarakain.viewmodels.StoreOfTheDayViewModel
 
 class StoreOfTheDayFragment : Fragment() {
     private lateinit var binding: FragmentStoreOfTheDayBinding
     private var stores = arrayOf<String>()
     private var handler: Handler?  = null
-    private val viewModel: StoreViewModel by viewModels {
-        InjectorUtils.provideStoreViewModelFactory(requireContext())
+    private val viewModel: StoreOfTheDayViewModel by viewModels {
+        InjectorUtils.provideStoreOfTheDayViewModelFactory(requireContext())
     }
     private val args: StoreOfTheDayFragmentArgs by navArgs()
 
