@@ -1,15 +1,37 @@
 package com.tokoy.tosa.tarakain.viewmodels
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.tokoy.tosa.tarakain.db.models.Store
 import com.tokoy.tosa.tarakain.db.repo.StoreRepo
+import com.tokoy.tosa.tarakain.utils.Event
+import kotlinx.coroutines.launch
 
 class StoreListViewModel internal constructor(
     private val storeRepo: StoreRepo
 ): ViewModel() {
+    var isFavorites = false
+    var isStoreUpdated = MutableLiveData<Event<Store>>()
 
-    val stores: LiveData<List<Store>> = storeRepo.getStores()
+    fun getStores(): LiveData<List<Store>> {
+        return if (isFavorites) {
+            storeRepo.getFavoriteStores()
+        } else {
+            storeRepo.getStores()
+        }
+    }
 
-    val favorites: LiveData<List<Store>> = storeRepo.getFavoriteStores()
+    fun updateStore(store: Store) {
+        val storeId = store.id ?: return
+        viewModelScope.launch {
+            if (store.isFavorite) {
+                storeRepo.removeFromFavorites(storeId)
+            } else {
+                storeRepo.addToFavorites(storeId)
+            }
+        }
+        isStoreUpdated.value = Event(store)
+    }
 }

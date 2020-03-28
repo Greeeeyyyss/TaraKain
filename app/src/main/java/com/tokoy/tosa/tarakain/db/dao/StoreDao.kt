@@ -10,10 +10,10 @@ interface StoreDao {
     suspend fun insert(store: Store)
 
     @Query("UPDATE Store SET isFavorite = 1 WHERE id = :id")
-    fun addToFavorite(id: Int)
+    suspend fun addToFavorite(id: Int)
 
     @Query("UPDATE Store SET isFavorite = 0 WHERE id = :id")
-    fun removeFromFavorite(id: Int)
+    suspend fun removeFromFavorite(id: Int)
 
     @Query("SELECT * FROM Store ORDER BY name")
     fun getAll(): LiveData<List<Store>>

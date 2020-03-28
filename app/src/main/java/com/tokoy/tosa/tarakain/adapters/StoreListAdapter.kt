@@ -9,6 +9,7 @@ import com.tokoy.tosa.tarakain.db.models.Store
 class StoreListAdapter : RecyclerView.Adapter<StoreListAdapter.StoreListViewHolder>() {
     private var stores: List<Store> = mutableListOf()
     var onStoreItemClick: (Store) -> Unit = {}
+    var onUpdateStoreItemClick: (Store) -> Unit = {}
 
     fun setStores(stores: List<Store>) {
         this.stores = stores
@@ -16,13 +17,20 @@ class StoreListAdapter : RecyclerView.Adapter<StoreListAdapter.StoreListViewHold
 
     class StoreListViewHolder(
         val binding: ViewStoreItemBinding,
-        val onStoreItemClick: (Store) -> Unit
+        private val onStoreItemClick: (Store) -> Unit,
+        private val onUpdateStoreItemClick: (Store) -> Unit
     ): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(store: Store) {
             binding.store = store
-            binding.layoutStoreItem.setOnClickListener {
+            binding.textStoreName.setOnClickListener {
                 onStoreItemClick.invoke(store)
+            }
+            binding.textStoreCategory.setOnClickListener {
+                onStoreItemClick.invoke(store)
+            }
+            binding.imgFavorite.setOnClickListener {
+                onUpdateStoreItemClick.invoke(store)
             }
             binding.executePendingBindings()
         }
@@ -31,7 +39,7 @@ class StoreListAdapter : RecyclerView.Adapter<StoreListAdapter.StoreListViewHold
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoreListViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ViewStoreItemBinding.inflate(layoutInflater, parent, false)
-        return StoreListViewHolder(binding, onStoreItemClick)
+        return StoreListViewHolder(binding, onStoreItemClick, onUpdateStoreItemClick)
     }
 
     override fun getItemCount(): Int = stores.size

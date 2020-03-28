@@ -73,6 +73,7 @@
                 android:text="@string/randomize"
                 android:onClick="@{() -> viewModel.randomize()}"
                 style="@style/PrimaryButton"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toTopOf="@+id/btn_check_stores"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -86,7 +87,7 @@
                 android:layout_marginBottom="16dp"
                 android:text="@{viewModel.isFavorites ? @string/check_favorites : @string/check_stores}"
                 android:onClick="@{() -> viewModel.checkStores()}"
-                style="@style/SecondaryButton"
+                style="@style/PrimaryButton"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

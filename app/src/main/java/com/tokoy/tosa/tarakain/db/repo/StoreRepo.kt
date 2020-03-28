@@ -17,9 +17,9 @@ class StoreRepo constructor(private val storeDao: StoreDao) {
 
     fun getFavoriteStores() = storeDao.getAllFavorites()
 
-    fun addToFavorites(storeId: Int) = storeDao.addToFavorite(storeId)
+    suspend fun addToFavorites(storeId: Int) = storeDao.addToFavorite(storeId)
 
-    fun removeFromFavorites(storeId: Int) = storeDao.removeFromFavorite(storeId)
+    suspend fun removeFromFavorites(storeId: Int) = storeDao.removeFromFavorite(storeId)
 
     companion object {
         @Volatile private var instance: StoreRepo? = null

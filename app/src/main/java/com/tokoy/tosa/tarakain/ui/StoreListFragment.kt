@@ -15,7 +15,9 @@ import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.adapters.StoreListAdapter
 import com.tokoy.tosa.tarakain.databinding.FragmentStoreListBinding
 import com.tokoy.tosa.tarakain.db.dao.TKConverter
+import com.tokoy.tosa.tarakain.db.models.Store
 import com.tokoy.tosa.tarakain.utils.Constants
+import com.tokoy.tosa.tarakain.utils.EventObserver
 import com.tokoy.tosa.tarakain.utils.InjectorUtils
 import com.tokoy.tosa.tarakain.viewmodels.StoreListViewModel
 
@@ -38,36 +40,44 @@ class StoreListFragment : Fragment() {
             container,
             false
         )
+        setupList()
+
+        viewModel.isFavorites = args.isFavorites
+
+        viewModel.getStores().observe(viewLifecycleOwner, Observer { stores ->
+            if (stores.isEmpty()) {
+                // TODO add empty state
+            } else {
+                storeListAdapter?.setStores(stores)
+                storeListAdapter?.notifyDataSetChanged()
+            }
+        })
+
+        viewModel.isStoreUpdated.observe(viewLifecycleOwner, EventObserver { store ->
+            // TODO handle last item removed in favorites
+            storeListAdapter?.notifyItemChanged(store.id ?: 0)
+        })
+
+        return binding.root
+    }
+
+    private fun setupList() {
         storeListAdapter = StoreListAdapter()
         storeListAdapter?.onStoreItemClick = { store ->
-            val bundle = Bundle()
-            bundle.putString(Constants.Key.store, TKConverter.storeToString(store))
-            findNavController().navigate(R.id.action_storeList_to_editStore, bundle)
+            goToEditStore(store)
+        }
+        storeListAdapter?.onUpdateStoreItemClick = { store ->
+            viewModel.updateStore(store)
         }
         binding.recyclerview.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = storeListAdapter
         }
-        if (args.isFavorites) {
-            getFavoriteStores()
-        } else {
-            getAllStores()
-        }
-        return binding.root
     }
 
-    private fun getAllStores() {
-        // TODO display empty state
-        viewModel.stores.observe(viewLifecycleOwner, Observer { stores ->
-            storeListAdapter?.setStores(stores)
-            storeListAdapter?.notifyDataSetChanged()
-        })
-    }
-
-    private fun getFavoriteStores() {
-        viewModel.favorites.observe(viewLifecycleOwner, Observer { stores ->
-            storeListAdapter?.setStores(stores)
-            storeListAdapter?.notifyDataSetChanged()
-        })
+    private fun goToEditStore(store: Store) {
+        val bundle = Bundle()
+        bundle.putString(Constants.Key.store, TKConverter.storeToString(store))
+        findNavController().navigate(R.id.action_storeList_to_editStore, bundle)
     }
 }
