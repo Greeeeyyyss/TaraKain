@@ -10,12 +10,13 @@ import com.tokoy.tosa.tarakain.utils.Event
 import kotlin.random.Random
 
 class HeadsOrTailsViewModel constructor(private val storeRepo: StoreRepo): ViewModel() {
-    var storeNames = listOf<String>()
+    var storeNames = listOf("", "")
     var headIndex = ObservableField(0)
-    var tailIndex = ObservableField(0)
+    var tailIndex = ObservableField(1)
     var randomStore = ObservableField("")
     var randomBoolean = ObservableField(false)
-    var coinFlipped = MutableLiveData<Event<Boolean>>()
+    var coinFlipEvent = MutableLiveData<Event<Boolean>>()
+    var addStoreEvent = MutableLiveData<Event<Boolean>>()
 
     val stores: LiveData<List<Store>> = storeRepo.getStores()
 
@@ -30,6 +31,10 @@ class HeadsOrTailsViewModel constructor(private val storeRepo: StoreRepo): ViewM
     }
 
     fun flipCoin() {
-        coinFlipped.value = Event(true)
+        coinFlipEvent.value = Event(true)
+    }
+
+    fun addStore() {
+        addStoreEvent.value = Event(true)
     }
 }

@@ -9,12 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.databinding.FragmentAddStoreBinding
-import com.tokoy.tosa.tarakain.utils.EventObserver
-import com.tokoy.tosa.tarakain.utils.InjectorUtils
-import com.tokoy.tosa.tarakain.utils.hideKeyboard
-import com.tokoy.tosa.tarakain.utils.showSnackbar
+import com.tokoy.tosa.tarakain.utils.*
 import com.tokoy.tosa.tarakain.viewmodels.AddStoreViewModel
 
 class AddStoreFragment : Fragment() {
@@ -22,6 +20,7 @@ class AddStoreFragment : Fragment() {
     private val viewModel: AddStoreViewModel by viewModels {
         InjectorUtils.provideAddStoreViewModelFactory(requireContext())
     }
+    private val args: AddStoreFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,8 +33,15 @@ class AddStoreFragment : Fragment() {
             container,
             false
         )
+        viewModel.isFavorite.set(args.isFavorites)
+
         setupObservers()
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        hideKeyboard()
     }
 
     private fun setupObservers() {

@@ -273,11 +273,10 @@
         <item name="">Bullchef</item>
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="store_2">Store 2</string>
     <string name="tails">Tails</string>
-    <string name="store_1">Store 1</string>
     <string name="heads">Heads</string>
+    <string name="empty_state_store">There are no stores at the moment.</string>
+    <string name="randomize_instruction">Start randomizing \n by adding more stores</string>
+    <string name="flip_instruction">Start flipping by adding \n at least 2 stores</string>
 
 </resources>

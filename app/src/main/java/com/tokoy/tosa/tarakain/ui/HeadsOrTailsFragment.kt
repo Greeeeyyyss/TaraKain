@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.databinding.FragmentHeadsOrTailsBinding
 import com.tokoy.tosa.tarakain.utils.EventObserver
@@ -42,15 +43,22 @@ class HeadsOrTailsFragment : Fragment() {
         viewModel.stores.observe(viewLifecycleOwner, Observer { stores ->
             if (stores.count() > 1) {
                 viewModel.storeNames = stores.map { it.name }
-                viewModel.headIndex.set(0)
-                viewModel.tailIndex.set(1)
-                binding.viewModel = viewModel
+                binding.showEmptyState = false
+            } else {
+                binding.showEmptyState = true
+            }
+            binding.viewModel = viewModel
+        })
+
+        viewModel.coinFlipEvent.observe(viewLifecycleOwner, EventObserver { coinFlipped ->
+            if (coinFlipped) {
+                onFlip()
             }
         })
 
-        viewModel.coinFlipped.observe(viewLifecycleOwner, EventObserver { coinFlipped ->
-            if (coinFlipped) {
-                onFlip()
+        viewModel.addStoreEvent.observe(viewLifecycleOwner, EventObserver {
+            if (it) {
+                findNavController().navigate(R.id.action_headsOrTails_to_addStore)
             }
         })
     }

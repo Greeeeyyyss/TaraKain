@@ -46,6 +46,11 @@ class EditStoreFragment : Fragment() {
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        hideKeyboard()
+    }
+
     private fun setupObservers() {
         viewModel.getCategories().observe(viewLifecycleOwner, Observer { categories ->
             viewModel.categoryList = categories

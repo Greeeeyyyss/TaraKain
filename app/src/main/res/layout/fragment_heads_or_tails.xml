@@ -7,6 +7,9 @@
         <variable
                 name="viewModel"
                 type="com.tokoy.tosa.tarakain.viewmodels.HeadsOrTailsViewModel" />
+        <variable
+                name="showEmptyState"
+                type="Boolean" />
         <import type="android.view.View" />
     </data>
 
@@ -17,18 +20,16 @@
 
         <TextView
                 android:id="@+id/text_store"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/layout_margin_right"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="@{viewModel.randomStore}"
-                android:textSize="30sp"
+                android:text="@{showEmptyState ? @string/flip_instruction : viewModel.randomStore}"
+                android:textAlignment="center"
+                android:textSize="24sp"
                 android:textStyle="bold"
-                android:visibility="@{ viewModel.randomStore != null ? View.VISIBLE : View.INVISIBLE }"
-                app:layout_constraintBottom_toTopOf="@id/img_coin"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.50"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Store 1" />
@@ -37,33 +38,30 @@
                 android:id="@+id/img_coin"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:contentDescription="@string/app_name"
                 android:src="@{viewModel.randomBoolean ? @drawable/ic_coin_heads : @drawable/ic_coin_tails}"
-                android:visibility="visible"
                 android:tint="@color/colorPrimaryDark"
-                app:layout_constraintBottom_toTopOf="@id/text_input_layout_heads"
+                android:visibility="visible"
                 app:layout_constraintDimensionRatio="2:1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_store"
-                tools:src="@drawable/ic_coin_heads"/>
+                tools:src="@drawable/ic_coin_heads" />
 
         <EditText
                 android:id="@+id/text_input_layout_heads"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/colorPrimaryDark"
+                android:enabled="false"
                 android:focusable="false"
                 android:hint="@string/heads"
-                android:textSize="12sp"
                 android:inputType="text"
                 android:textColorHint="@color/colorPrimaryDark"
-                app:layout_constraintBottom_toTopOf="@+id/spinner_head"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/img_coin" />
@@ -76,6 +74,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 android:entries="@{viewModel.storeNames}"
+                android:clickable="@{!showEmptyState}"
                 android:selectedItemPosition="@={viewModel.headIndex}"
                 android:spinnerMode="dialog"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -92,6 +91,7 @@
                 android:textSize="12sp"
                 android:hint="@string/tails"
                 android:inputType="text"
+                android:enabled="false"
                 android:textColorHint="@color/colorPrimaryDark"
                 android:backgroundTint="@color/colorPrimaryDark"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -106,6 +106,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 android:entries="@{viewModel.storeNames}"
+                android:clickable="@{!showEmptyState}"
                 android:selectedItemPosition="@={viewModel.tailIndex}"
                 android:spinnerMode="dialog"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -121,6 +122,22 @@
                 android:layout_marginBottom="16dp"
                 android:text="@string/flip"
                 android:onClick="@{() -> viewModel.flipCoin()}"
+                android:visibility="@{showEmptyState ? View.GONE : View.VISIBLE}"
+                style="@style/PrimaryButton"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+                android:id="@+id/btn_add_store"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/add_store"
+                android:onClick="@{() -> viewModel.addStore()}"
+                android:visibility="@{showEmptyState ? View.VISIBLE : View.GONE}"
                 style="@style/PrimaryButton"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

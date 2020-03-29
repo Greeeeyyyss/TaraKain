@@ -45,17 +45,16 @@ class StoreListFragment : Fragment() {
         viewModel.isFavorites = args.isFavorites
 
         viewModel.getStores().observe(viewLifecycleOwner, Observer { stores ->
-            if (stores.isEmpty()) {
-                // TODO add empty state
-            } else {
-                storeListAdapter?.setStores(stores)
-                storeListAdapter?.notifyDataSetChanged()
-            }
+            binding.showEmptyState = stores.isEmpty()
+            storeListAdapter?.setStores(stores)
+            storeListAdapter?.notifyDataSetChanged()
         })
 
         viewModel.isStoreUpdated.observe(viewLifecycleOwner, EventObserver { store ->
-            // TODO handle last item removed in favorites
             storeListAdapter?.notifyItemChanged(store.id ?: 0)
+            if (storeListAdapter?.itemCount == 0) {
+                binding.showEmptyState = true
+            }
         })
 
         return binding.root

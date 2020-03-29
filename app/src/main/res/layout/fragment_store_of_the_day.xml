@@ -7,11 +7,31 @@
         <variable
                 name="viewModel"
                 type="com.tokoy.tosa.tarakain.viewmodels.StoreOfTheDayViewModel" />
+        <variable
+                name="showEmptyState"
+                type="Boolean" />
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+        <TextView
+                android:id="@+id/text_no_store"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/layout_margin_right"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
+                android:text="@string/randomize_instruction"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:visibility="@{showEmptyState ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/img_dice" />
 
         <TextView
                 android:id="@+id/text_store"
@@ -20,11 +40,12 @@
                 android:layout_marginStart="@dimen/layout_margin_right"
                 android:layout_marginEnd="16dp"
                 android:text="@{viewModel.chosenStore.name}"
-                android:textSize="30sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 android:textAlignment="center"
                 android:maxLines="2"
                 android:ellipsize="end"
+                android:visibility="@{showEmptyState ? View.GONE : View.VISIBLE}"
                 app:layout_constraintBottom_toTopOf="@+id/img_dice"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +63,7 @@
                 android:textAlignment="center"
                 android:lines="1"
                 android:ellipsize="end"
+                android:visibility="@{showEmptyState ? View.GONE : View.VISIBLE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_store"
@@ -64,17 +86,17 @@
                 tools:src="@drawable/ic_dice_5" />
 
         <Button
-                android:id="@+id/btn_randomize"
+                android:id="@+id/btn_add_store"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:text="@string/randomize"
-                android:onClick="@{() -> viewModel.randomize()}"
-                style="@style/PrimaryButton"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toTopOf="@+id/btn_check_stores"
+                android:text="@string/add_store"
+                android:onClick="@{() -> viewModel.addStore()}"
+                android:visibility="@{showEmptyState ? View.VISIBLE : View.GONE}"
+                style="@style/SecondaryButton"
+                app:layout_constraintBottom_toTopOf="@id/btn_check_stores"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 

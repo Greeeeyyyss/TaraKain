@@ -59,6 +59,10 @@
             android:id="@+id/addStoreFragment"
             android:name="com.tokoy.tosa.tarakain.ui.AddStoreFragment"
             android:label="AddStoreFragment">
+        <argument
+                android:name="isFavorites"
+                android:defaultValue="false"
+                app:argType="boolean" />
         <action
                 android:id="@+id/action_addStore_to_storeList"
                 app:destination="@id/storeListFragment"

@@ -11,6 +11,7 @@ class StoreOfTheDayViewModel constructor(
     private val storeRepo: StoreRepo
 ): ViewModel() {
     var isFavorites = false
+    var onAddStoreEvent = MutableLiveData<Event<Boolean>>()
     var onRandomizedEvent = MutableLiveData<Event<Boolean>>()
     var onCheckStoresEvent = MutableLiveData<Event<Boolean>>()
     var storeList: List<Store> = mutableListOf()
@@ -33,6 +34,10 @@ class StoreOfTheDayViewModel constructor(
 
     fun randomize() {
         onRandomizedEvent.value = Event(true)
+    }
+
+    fun addStore() {
+        onAddStoreEvent.value = Event(true)
     }
 
     fun checkStores() {

@@ -73,7 +73,12 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                 }
                 binding.toolbarRightButton.visibility = View.VISIBLE
                 binding.toolbarRightButton.setOnClickListener {
-                    navController().navigate(R.id.action_storeOfTheDay_to_addStore)
+                    val bundle = Bundle()
+                    bundle.putBoolean(
+                        Constants.Key.isFavorites,
+                        arguments?.getBoolean(Constants.Key.isFavorites) ?: false
+                    )
+                    navController().navigate(R.id.action_storeOfTheDay_to_addStore, bundle)
                 }
             }
             R.id.addStoreFragment -> {

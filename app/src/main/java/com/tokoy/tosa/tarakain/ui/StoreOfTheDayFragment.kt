@@ -59,10 +59,9 @@ class StoreOfTheDayFragment : Fragment() {
     private fun setupObservers() {
         viewModel.getStores().observe(viewLifecycleOwner, Observer { storeList ->
             viewModel.storeList = storeList
+            binding.showEmptyState = storeList.count() < 2
 
-            if (storeList.isEmpty()) {
-                // TODO empty state
-            } else {
+            if (storeList.isNotEmpty()) {
                 val store = viewModel.getRandomStore()
                 binding.textStore.text = store.name
                 binding.textCategory.text = store.category?.name
@@ -70,7 +69,7 @@ class StoreOfTheDayFragment : Fragment() {
         })
 
         viewModel.onRandomizedEvent.observe(viewLifecycleOwner, EventObserver {
-            if (it) {
+            if (it && viewModel.storeList.count() > 1) {
                 onRandomizeClick()
             }
         })
@@ -80,6 +79,14 @@ class StoreOfTheDayFragment : Fragment() {
                 val bundle = Bundle()
                 bundle.putBoolean(Constants.Key.isFavorites, args.isFavorites)
                 findNavController().navigate(R.id.action_storeOfTheDay_to_storeList, bundle)
+            }
+        })
+
+        viewModel.onAddStoreEvent.observe(viewLifecycleOwner, EventObserver {
+            if (it) {
+                val bundle = Bundle()
+                bundle.putBoolean(Constants.Key.isFavorites, args.isFavorites)
+                findNavController().navigate(R.id.action_storeOfTheDay_to_addStore, bundle)
             }
         })
     }
