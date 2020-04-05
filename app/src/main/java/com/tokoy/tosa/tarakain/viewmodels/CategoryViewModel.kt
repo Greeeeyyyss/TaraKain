@@ -4,8 +4,9 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import com.tokoy.tosa.tarakain.db.models.Category
 import com.tokoy.tosa.tarakain.db.repo.CategoryRepo
+import javax.inject.Inject
 
-class CategoryViewModel internal constructor(
+class CategoryViewModel @Inject constructor(
     private val categoryRepo: CategoryRepo
 ): ViewModel() {
     var categoryNames = listOf<String>()

@@ -6,8 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.tokoy.tosa.tarakain.db.models.Store
 import com.tokoy.tosa.tarakain.db.repo.StoreRepo
 import com.tokoy.tosa.tarakain.utils.Event
+import javax.inject.Inject
 
-class StoreOfTheDayViewModel constructor(
+class StoreOfTheDayViewModel @Inject constructor(
     private val storeRepo: StoreRepo
 ): ViewModel() {
     var isFavorites = false

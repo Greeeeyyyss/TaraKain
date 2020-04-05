@@ -16,4 +16,7 @@ interface CategoryDao {
 
     @Query("SELECT * FROM Category")
     fun getAll(): LiveData<List<Category>>
+
+    @Query("SELECT COUNT(*) FROM Category")
+    fun getCount(): Int
 }

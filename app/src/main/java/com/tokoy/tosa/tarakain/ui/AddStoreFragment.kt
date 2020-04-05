@@ -6,20 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.databinding.FragmentAddStoreBinding
+import com.tokoy.tosa.tarakain.di.Injectable
 import com.tokoy.tosa.tarakain.utils.*
 import com.tokoy.tosa.tarakain.viewmodels.AddStoreViewModel
+import javax.inject.Inject
 
-class AddStoreFragment : Fragment() {
+class AddStoreFragment : Fragment(), Injectable {
     private lateinit var binding: FragmentAddStoreBinding
-    private val viewModel: AddStoreViewModel by viewModels {
-        InjectorUtils.provideAddStoreViewModelFactory(requireContext())
-    }
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private lateinit var viewModel: AddStoreViewModel
     private val args: AddStoreFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -33,6 +37,8 @@ class AddStoreFragment : Fragment() {
             container,
             false
         )
+        viewModel = ViewModelProvider(this, viewModelFactory)
+            .get(AddStoreViewModel::class.java)
         viewModel.isFavorite.set(args.isFavorites)
 
         setupObservers()

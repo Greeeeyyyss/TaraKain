@@ -11,8 +11,9 @@ import com.tokoy.tosa.tarakain.db.repo.StoreRepo
 import com.tokoy.tosa.tarakain.utils.Event
 
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class EditStoreViewModel constructor(
+class EditStoreViewModel @Inject constructor(
     private val storeRepo: StoreRepo,
     private val categoryRepo: CategoryRepo
 ): ViewModel() {

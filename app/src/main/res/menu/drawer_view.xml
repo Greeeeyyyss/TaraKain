@@ -3,7 +3,7 @@
       xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/nav_store_of_the_day"
-          android:icon="@drawable/ic_spoon_fork"
+          android:icon="@drawable/ic_storefront"
           android:title="@string/store_of_the_day" />
     <item android:id="@+id/nav_favorite_stores"
             android:icon="@drawable/ic_heart"

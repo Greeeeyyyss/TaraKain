@@ -7,9 +7,11 @@ import androidx.lifecycle.ViewModel
 import com.tokoy.tosa.tarakain.db.models.Store
 import com.tokoy.tosa.tarakain.db.repo.StoreRepo
 import com.tokoy.tosa.tarakain.utils.Event
+import javax.inject.Inject
 import kotlin.random.Random
 
-class HeadsOrTailsViewModel constructor(private val storeRepo: StoreRepo): ViewModel() {
+class HeadsOrTailsViewModel
+    @Inject constructor(private val storeRepo: StoreRepo): ViewModel() {
     var storeNames = listOf("", "")
     var headIndex = ObservableField(0)
     var tailIndex = ObservableField(1)

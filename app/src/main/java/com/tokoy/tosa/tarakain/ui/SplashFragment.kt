@@ -10,12 +10,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.databinding.FragmentSplashBinding
+import com.tokoy.tosa.tarakain.di.Injectable
 import com.tokoy.tosa.tarakain.utils.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SplashFragment : Fragment() {
+class SplashFragment : Fragment(), Injectable {
     private lateinit var binding: FragmentSplashBinding
 
     override fun onCreateView(

@@ -7,24 +7,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.databinding.FragmentStoreOfTheDayBinding
+import com.tokoy.tosa.tarakain.db.repo.StoreRepo
+import com.tokoy.tosa.tarakain.di.Injectable
 import com.tokoy.tosa.tarakain.utils.Constants
 import com.tokoy.tosa.tarakain.utils.EventObserver
-import com.tokoy.tosa.tarakain.utils.InjectorUtils
 import com.tokoy.tosa.tarakain.utils.getRandomColor
 import com.tokoy.tosa.tarakain.viewmodels.StoreOfTheDayViewModel
+import javax.inject.Inject
 
-class StoreOfTheDayFragment : Fragment() {
+class StoreOfTheDayFragment : Fragment(), Injectable {
     private lateinit var binding: FragmentStoreOfTheDayBinding
     private var handler: Handler?  = null
-    private val viewModel: StoreOfTheDayViewModel by viewModels {
-        InjectorUtils.provideStoreOfTheDayViewModelFactory(requireContext())
-    }
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private lateinit var viewModel: StoreOfTheDayViewModel
     private val args: StoreOfTheDayFragmentArgs by navArgs()
 
     private val dices = arrayOf(
@@ -46,6 +49,8 @@ class StoreOfTheDayFragment : Fragment() {
             container,
             false
         )
+        viewModel = ViewModelProvider(this, viewModelFactory)
+            .get(StoreOfTheDayViewModel::class.java)
 
         viewModel.isFavorites = args.isFavorites
         binding.viewModel = viewModel

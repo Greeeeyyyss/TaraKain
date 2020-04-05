@@ -10,8 +10,9 @@ import com.tokoy.tosa.tarakain.db.repo.CategoryRepo
 import com.tokoy.tosa.tarakain.db.repo.StoreRepo
 import com.tokoy.tosa.tarakain.utils.Event
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AddStoreViewModel constructor (
+class AddStoreViewModel @Inject constructor (
     private val storeRepo: StoreRepo,
     private val categoryRepo: CategoryRepo
 ): ViewModel() {
@@ -22,7 +23,7 @@ class AddStoreViewModel constructor (
     var isFavorite = ObservableField(false)
     var storeAdded = MutableLiveData<Event<Boolean>>()
 
-    private fun isStoreValid() = storeName.get()?.isNotBlank() ?: false
+    fun isStoreValid() = storeName.get()?.isNotBlank() ?: false
 
     fun getCategories() = categoryRepo.getCategories()
 

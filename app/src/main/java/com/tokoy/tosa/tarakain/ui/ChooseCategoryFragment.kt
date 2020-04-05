@@ -7,20 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.databinding.FragmentChooseCategoryBinding
-import com.tokoy.tosa.tarakain.db.models.Category
-import com.tokoy.tosa.tarakain.utils.InjectorUtils
+import com.tokoy.tosa.tarakain.di.Injectable
 import com.tokoy.tosa.tarakain.viewmodels.CategoryViewModel
+import javax.inject.Inject
 
-class ChooseCategoryFragment : Fragment() {
+class ChooseCategoryFragment : Fragment(), Injectable {
     private lateinit var binding: FragmentChooseCategoryBinding
 
-    private val viewModel: CategoryViewModel by viewModels {
-        InjectorUtils.provideCategoryViewModelFactory(requireContext())
-    }
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private lateinit var viewModel: CategoryViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +33,8 @@ class ChooseCategoryFragment : Fragment() {
             container,
             false
         )
+        viewModel = ViewModelProvider(this, viewModelFactory)
+            .get(CategoryViewModel::class.java)
         displayCategories()
         return binding.root
     }

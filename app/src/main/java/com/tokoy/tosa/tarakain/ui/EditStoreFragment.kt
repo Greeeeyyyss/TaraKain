@@ -6,25 +6,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.databinding.FragmentEditStoreBinding
 import com.tokoy.tosa.tarakain.db.dao.TKConverter
+import com.tokoy.tosa.tarakain.di.Injectable
 import com.tokoy.tosa.tarakain.utils.EventObserver
-import com.tokoy.tosa.tarakain.utils.InjectorUtils
 import com.tokoy.tosa.tarakain.utils.hideKeyboard
 import com.tokoy.tosa.tarakain.utils.showSnackbar
 import com.tokoy.tosa.tarakain.viewmodels.EditStoreViewModel
+import javax.inject.Inject
 
-class EditStoreFragment : Fragment() {
+class EditStoreFragment : Fragment(), Injectable {
     private lateinit var binding: FragmentEditStoreBinding
     private val args: EditStoreFragmentArgs by navArgs()
-    private val viewModel: EditStoreViewModel by viewModels {
-        InjectorUtils.provideEditStoreViewModelFactory(requireContext())
-    }
+
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+    private lateinit var viewModel: EditStoreViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +38,8 @@ class EditStoreFragment : Fragment() {
             container,
             false
         )
+        viewModel = ViewModelProvider(this, viewModelFactory)
+            .get(EditStoreViewModel::class.java)
 
         TKConverter.stringToStore(args.store)?.let {
             viewModel.store = it

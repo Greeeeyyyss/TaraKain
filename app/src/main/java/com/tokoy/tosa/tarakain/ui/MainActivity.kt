@@ -15,10 +15,17 @@ import com.tokoy.tosa.tarakain.databinding.ActivityMainBinding
 import com.tokoy.tosa.tarakain.db.models.Category
 import com.tokoy.tosa.tarakain.db.models.Store
 import com.tokoy.tosa.tarakain.utils.Constants
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
+class MainActivity : AppCompatActivity(), HasAndroidInjector, NavController.OnDestinationChangedListener {
     private lateinit var binding: ActivityMainBinding
+
+    @Inject
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -146,5 +153,9 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
     private fun openDrawer() {
         binding.drawerLayout.openDrawer(GravityCompat.START)
+    }
+
+    override fun androidInjector(): AndroidInjector<Any> {
+        return dispatchingAndroidInjector
     }
 }

@@ -8,8 +8,9 @@ import com.tokoy.tosa.tarakain.db.models.Store
 import com.tokoy.tosa.tarakain.db.repo.StoreRepo
 import com.tokoy.tosa.tarakain.utils.Event
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class StoreListViewModel internal constructor(
+class StoreListViewModel @Inject constructor(
     private val storeRepo: StoreRepo
 ): ViewModel() {
     var isFavorites = false

@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,16 +16,17 @@ import com.tokoy.tosa.tarakain.adapters.StoreListAdapter
 import com.tokoy.tosa.tarakain.databinding.FragmentStoreListBinding
 import com.tokoy.tosa.tarakain.db.dao.TKConverter
 import com.tokoy.tosa.tarakain.db.models.Store
+import com.tokoy.tosa.tarakain.di.Injectable
 import com.tokoy.tosa.tarakain.utils.Constants
 import com.tokoy.tosa.tarakain.utils.EventObserver
-import com.tokoy.tosa.tarakain.utils.InjectorUtils
 import com.tokoy.tosa.tarakain.viewmodels.StoreListViewModel
+import javax.inject.Inject
 
-class StoreListFragment : Fragment() {
+class StoreListFragment : Fragment(), Injectable {
     private lateinit var binding: FragmentStoreListBinding
-    private val viewModel: StoreListViewModel by viewModels {
-        InjectorUtils.provideStoreListViewModelFactory(requireContext())
-    }
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private lateinit var viewModel: StoreListViewModel
     private var storeListAdapter: StoreListAdapter? = null
     private val args: StoreListFragmentArgs by navArgs()
 
@@ -40,6 +41,8 @@ class StoreListFragment : Fragment() {
             container,
             false
         )
+        viewModel = ViewModelProvider(this, viewModelFactory)
+            .get(StoreListViewModel::class.java)
         setupList()
 
         viewModel.isFavorites = args.isFavorites
