@@ -24,7 +24,7 @@ class EditStoreViewModel @Inject constructor(
     var isStoreUpdated = MutableLiveData<Event<Boolean>>()
     var isStoreDeleted = MutableLiveData<Event<Boolean>>()
 
-    private fun isStoreValid() = store.name.isNotBlank()
+    fun isStoreValid() = store.name.isNotBlank()
 
     fun getCategories() = categoryRepo.getCategories()
 
