@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="toolbar_height">45dp</dimen>
-    <dimen name="toolbar_left_icon_size">20dp</dimen>
     <dimen name="toolbar_padding">5dp</dimen>
-    <dimen name="toolbar_padding_left">5dp</dimen>
-    <dimen name="toolbar_padding_right">5dp</dimen>
     <dimen name="toolbar_title_size">18sp</dimen>
 
     <dimen name="layout_margin_left">16dp</dimen>

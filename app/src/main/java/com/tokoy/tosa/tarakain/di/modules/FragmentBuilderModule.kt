@@ -23,9 +23,6 @@ abstract class FragmentBuilderModule {
     abstract fun contributeStoreOfTheDayFragment(): StoreOfTheDayFragment
 
     @ContributesAndroidInjector
-    abstract fun chooseCategoryFragment(): ChooseCategoryFragment
-
-    @ContributesAndroidInjector
     abstract fun splashFragment(): SplashFragment
 
 }

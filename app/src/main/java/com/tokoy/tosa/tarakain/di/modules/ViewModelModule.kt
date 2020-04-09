@@ -37,10 +37,5 @@ abstract class ViewModelModule {
     abstract fun bindStoreOfTheDayViewModel(storeOfTheDayViewModel: StoreOfTheDayViewModel): ViewModel
 
     @Binds
-    @IntoMap
-    @ViewModelKey(CategoryViewModel::class)
-    abstract fun bindCategoryViewModel(categoryViewModel: CategoryViewModel): ViewModel
-
-    @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 }

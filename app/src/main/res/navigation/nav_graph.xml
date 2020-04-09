@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/nav_graph"
         app:startDestination="@id/splashFragment">
     <fragment
             android:id="@+id/splashFragment"
@@ -39,9 +38,6 @@
                 app:exitAnim="@anim/slide_out_left"
                 app:popEnterAnim="@anim/slide_in_left"
                 app:popExitAnim="@anim/slide_out_right" />
-        <action
-                android:id="@+id/action_storeOfTheDay_to_chooseCategory"
-                app:destination="@id/chooseCategoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/headsOrTailsFragment"
@@ -71,10 +67,6 @@
                 app:popEnterAnim="@anim/slide_in_right"
                 app:popExitAnim="@anim/slide_out_left" />
     </fragment>
-    <fragment
-            android:id="@+id/chooseCategoryFragment"
-            android:name="com.tokoy.tosa.tarakain.ui.ChooseCategoryFragment"
-            android:label="ChooseCategoryFragment" />
     <fragment
         android:id="@+id/storeListFragment"
         android:name="com.tokoy.tosa.tarakain.ui.StoreListFragment"

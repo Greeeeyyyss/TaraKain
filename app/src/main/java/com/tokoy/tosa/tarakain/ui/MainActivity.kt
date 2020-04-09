@@ -12,8 +12,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.databinding.ActivityMainBinding
-import com.tokoy.tosa.tarakain.db.models.Category
-import com.tokoy.tosa.tarakain.db.models.Store
 import com.tokoy.tosa.tarakain.utils.Constants
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -95,17 +93,6 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector, NavController.OnDe
                     navController().popBackStack()
                 }
                 binding.toolbarRightButton.visibility = View.GONE
-            }
-            R.id.chooseCategoryFragment -> {
-                binding.toolbarTitle.text = getString(R.string.choose_category)
-                binding.toolbarLeftButton.setImageResource(R.drawable.ic_back)
-                binding.toolbarLeftButton.setOnClickListener {
-                    navController().popBackStack()
-                }
-                binding.toolbarRightButton.visibility = View.VISIBLE
-                binding.toolbarRightButton.setOnClickListener {
-                    // TODO add category screen
-                }
             }
             R.id.headsOrTailsFragment -> {
                 binding.toolbarTitle.text = getString(R.string.heads_or_tails)
