@@ -13,7 +13,9 @@ import androidx.navigation.fragment.navArgs
 import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.databinding.FragmentAddStoreBinding
 import com.tokoy.tosa.tarakain.di.Injectable
-import com.tokoy.tosa.tarakain.utils.*
+import com.tokoy.tosa.tarakain.utils.EventObserver
+import com.tokoy.tosa.tarakain.utils.hideKeyboard
+import com.tokoy.tosa.tarakain.utils.showSnackbar
 import com.tokoy.tosa.tarakain.viewmodels.AddStoreViewModel
 import javax.inject.Inject
 

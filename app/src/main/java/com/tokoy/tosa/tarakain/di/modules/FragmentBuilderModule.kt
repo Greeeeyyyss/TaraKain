@@ -1,6 +1,11 @@
 package com.tokoy.tosa.tarakain.di.modules
 
-import com.tokoy.tosa.tarakain.ui.*
+import com.tokoy.tosa.tarakain.ui.AddStoreFragment
+import com.tokoy.tosa.tarakain.ui.EditStoreFragment
+import com.tokoy.tosa.tarakain.ui.HeadsOrTailsFragment
+import com.tokoy.tosa.tarakain.ui.SplashFragment
+import com.tokoy.tosa.tarakain.ui.StoreListFragment
+import com.tokoy.tosa.tarakain.ui.StoreOfTheDayFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -24,5 +29,4 @@ abstract class FragmentBuilderModule {
 
     @ContributesAndroidInjector
     abstract fun splashFragment(): SplashFragment
-
 }

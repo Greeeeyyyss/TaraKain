@@ -25,8 +25,7 @@ class AppModule {
     @Singleton
     @Provides
     fun provideCategoryDao(db: TaraKainDatabase): CategoryDao {
-        val categoryDao =  db.categoryDao()
-        return categoryDao
+        return db.categoryDao()
     }
 
     @Singleton

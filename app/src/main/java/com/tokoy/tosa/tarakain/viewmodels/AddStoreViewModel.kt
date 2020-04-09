@@ -9,13 +9,13 @@ import com.tokoy.tosa.tarakain.db.models.Store
 import com.tokoy.tosa.tarakain.db.repo.CategoryRepo
 import com.tokoy.tosa.tarakain.db.repo.StoreRepo
 import com.tokoy.tosa.tarakain.utils.Event
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 class AddStoreViewModel @Inject constructor (
     private val storeRepo: StoreRepo,
     private val categoryRepo: CategoryRepo
-): ViewModel() {
+) : ViewModel() {
     var categoryList: List<Category> = mutableListOf()
     var categoryNames = listOf<String>()
     var categoryIndex = ObservableField(0)

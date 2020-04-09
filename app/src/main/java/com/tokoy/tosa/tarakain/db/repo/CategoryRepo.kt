@@ -2,11 +2,11 @@ package com.tokoy.tosa.tarakain.db.repo
 
 import com.tokoy.tosa.tarakain.db.dao.CategoryDao
 import com.tokoy.tosa.tarakain.db.models.Category
+import javax.inject.Inject
+import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import javax.inject.Inject
-import javax.inject.Singleton
 
 @Singleton
 class CategoryRepo @Inject constructor(private val categoryDao: CategoryDao) {

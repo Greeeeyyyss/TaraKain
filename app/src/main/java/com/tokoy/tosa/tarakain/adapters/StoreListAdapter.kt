@@ -19,7 +19,7 @@ class StoreListAdapter : RecyclerView.Adapter<StoreListAdapter.StoreListViewHold
         val binding: ViewStoreItemBinding,
         private val onStoreItemClick: (Store) -> Unit,
         private val onUpdateStoreItemClick: (Store) -> Unit
-    ): RecyclerView.ViewHolder(binding.root) {
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(store: Store) {
             binding.store = store

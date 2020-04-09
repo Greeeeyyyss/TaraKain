@@ -1,7 +1,11 @@
 package com.tokoy.tosa.tarakain.db.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import com.tokoy.tosa.tarakain.db.models.Store
 
 @Dao

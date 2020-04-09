@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class StoreOfTheDayViewModel @Inject constructor(
     private val storeRepo: StoreRepo
-): ViewModel() {
+) : ViewModel() {
     var isFavorites = false
     var onAddStoreEvent = MutableLiveData<Event<Boolean>>()
     var onRandomizedEvent = MutableLiveData<Event<Boolean>>()

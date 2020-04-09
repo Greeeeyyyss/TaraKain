@@ -8,4 +8,3 @@ data class Category constructor(
     @PrimaryKey(autoGenerate = true) var id: Int? = null,
     var name: String
 )
-

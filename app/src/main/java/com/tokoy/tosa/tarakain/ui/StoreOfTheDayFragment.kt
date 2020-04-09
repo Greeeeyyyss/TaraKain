@@ -13,7 +13,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.tokoy.tosa.tarakain.R
 import com.tokoy.tosa.tarakain.databinding.FragmentStoreOfTheDayBinding
-import com.tokoy.tosa.tarakain.db.repo.StoreRepo
 import com.tokoy.tosa.tarakain.di.Injectable
 import com.tokoy.tosa.tarakain.utils.Constants
 import com.tokoy.tosa.tarakain.utils.EventObserver
@@ -23,12 +22,10 @@ import javax.inject.Inject
 
 class StoreOfTheDayFragment : Fragment(), Injectable {
     private lateinit var binding: FragmentStoreOfTheDayBinding
-    private var handler: Handler?  = null
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private var handler: Handler? = null
     private lateinit var viewModel: StoreOfTheDayViewModel
     private val args: StoreOfTheDayFragmentArgs by navArgs()
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private val dices = arrayOf(
         R.drawable.ic_dice_1,

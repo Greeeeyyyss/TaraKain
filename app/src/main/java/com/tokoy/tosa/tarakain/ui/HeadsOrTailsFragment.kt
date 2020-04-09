@@ -71,7 +71,7 @@ class HeadsOrTailsFragment : Fragment(), Injectable {
         val fadeOut = AlphaAnimation(1f, 0f)
         fadeOut.duration = 1000
         fadeOut.fillAfter = true
-        fadeOut.setAnimationListener(object: Animation.AnimationListener {
+        fadeOut.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationRepeat(animation: Animation?) {}
 
             override fun onAnimationEnd(animation: Animation?) {

@@ -16,10 +16,14 @@ import com.tokoy.tosa.tarakain.utils.Constants
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
-import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), HasAndroidInjector, NavController.OnDestinationChangedListener {
+class MainActivity :
+    AppCompatActivity(),
+    HasAndroidInjector,
+    NavController.OnDestinationChangedListener {
+
     private lateinit var binding: ActivityMainBinding
 
     @Inject
@@ -104,7 +108,6 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector, NavController.OnDe
                 binding.toolbarRightButton.setOnClickListener {
                     navController().navigate(R.id.action_headsOrTails_to_addStore)
                 }
-
             }
             R.id.storeListFragment -> {
                 arguments?.let {

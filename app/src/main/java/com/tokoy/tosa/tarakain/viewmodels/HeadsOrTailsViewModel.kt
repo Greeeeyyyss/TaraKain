@@ -11,7 +11,7 @@ import javax.inject.Inject
 import kotlin.random.Random
 
 class HeadsOrTailsViewModel
-    @Inject constructor(private val storeRepo: StoreRepo): ViewModel() {
+    @Inject constructor(private val storeRepo: StoreRepo) : ViewModel() {
     var storeNames = listOf("", "")
     var headIndex = ObservableField(0)
     var tailIndex = ObservableField(1)

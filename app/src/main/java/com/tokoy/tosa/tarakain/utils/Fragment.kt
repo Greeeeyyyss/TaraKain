@@ -7,10 +7,11 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.tokoy.tosa.tarakain.R
-import java.util.*
+import java.util.Random
 
 fun Fragment.hideKeyboard() {
-    val inputMethodManager = context?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    val inputMethodManager =
+        context?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
     inputMethodManager.hideSoftInputFromWindow(view?.windowToken, 0)
 }
 
@@ -35,4 +36,3 @@ fun Fragment.showSnackbar(message: String) {
     snackbar.setBackgroundTint(ContextCompat.getColor(context, R.color.colorPrimaryDark))
     snackbar.show()
 }
-
