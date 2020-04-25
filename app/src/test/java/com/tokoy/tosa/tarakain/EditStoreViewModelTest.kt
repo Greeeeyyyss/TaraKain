@@ -10,7 +10,7 @@ class EditStoreViewModelTest : BaseViewModelTest() {
 
     @Before
     fun init() {
-        viewModel = EditStoreViewModel(storeRepo, categoryRepo)
+        viewModel = EditStoreViewModel(context, storeRepo, categoryRepo)
         viewModel.categoryList = categories
     }
 
@@ -21,8 +21,21 @@ class EditStoreViewModelTest : BaseViewModelTest() {
     }
 
     @Test
+    fun testStorePriceInputValid() {
+        viewModel.store.name = "Store"
+        viewModel.store.minPrice = 100
+        viewModel.store.maxPrice = 500
+        assertEquals(viewModel.isStoreValid(), true)
+    }
+
+    @Test
     fun testStoreInputInvalid() {
         viewModel.store.name = ""
+        assertEquals(viewModel.isStoreValid(), false)
+
+        viewModel.store.name = "Store"
+        viewModel.store.minPrice = 500
+        viewModel.store.maxPrice = 100
         assertEquals(viewModel.isStoreValid(), false)
     }
 

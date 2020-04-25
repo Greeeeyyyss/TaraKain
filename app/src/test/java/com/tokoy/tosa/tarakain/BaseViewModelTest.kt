@@ -1,5 +1,6 @@
 package com.tokoy.tosa.tarakain
 
+import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.tokoy.tosa.tarakain.asset.CoroutineTestRule
 import com.tokoy.tosa.tarakain.db.models.Category
@@ -23,6 +24,7 @@ open class BaseViewModelTest {
 
     val storeRepo: StoreRepo = Mockito.mock(StoreRepo::class.java)
     val categoryRepo: CategoryRepo = Mockito.mock(CategoryRepo::class.java)
+    val context = Mockito.mock(Application::class.java)
 
     val categories = mutableListOf(
         Category(name = "All"),
