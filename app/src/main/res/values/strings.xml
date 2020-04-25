@@ -29,4 +29,9 @@
     <string name="price_optional">Price (Optional)</string>
     <string name="search">Search…</string>
 
+    <!-- Errors -->
+    <string name="error_store_name">Name is required</string>
+    <string name="error_store_min_price">Should be less than maximum</string>
+    <string name="error_store_max_price">Should be higher than minimum</string>
+
 </resources>
