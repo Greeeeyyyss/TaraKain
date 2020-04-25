@@ -43,11 +43,11 @@ class StoreListFragment : Fragment(), Injectable {
         )
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(StoreListViewModel::class.java)
-        setupList()
+        binding.viewModel = viewModel
 
         viewModel.isFavorites = args.isFavorites
 
-        viewModel.getStores().observe(viewLifecycleOwner, Observer { stores ->
+        viewModel.stores.observe(viewLifecycleOwner, Observer { stores ->
             binding.showEmptyState = stores.isEmpty()
             storeListAdapter?.setStores(stores)
             storeListAdapter?.notifyDataSetChanged()
@@ -60,10 +60,13 @@ class StoreListFragment : Fragment(), Injectable {
             }
         })
 
+        setupList()
+
         return binding.root
     }
 
     private fun setupList() {
+        viewModel.getStores()
         storeListAdapter = StoreListAdapter()
         storeListAdapter?.onStoreItemClick = { store ->
             goToEditStore(store)

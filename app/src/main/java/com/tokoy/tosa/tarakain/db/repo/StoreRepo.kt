@@ -20,6 +20,10 @@ class StoreRepo @Inject constructor(private val storeDao: StoreDao) {
 
     fun getFavoriteStores() = storeDao.getAllFavorites()
 
+    fun searchStore(search: String) = storeDao.searchStore(search)
+
+    fun searchFavoriteStore(search: String) = storeDao.searchFavoriteStore(search)
+
     suspend fun addToFavorites(storeId: Int) = storeDao.addToFavorite(storeId)
 
     suspend fun removeFromFavorites(storeId: Int) = storeDao.removeFromFavorite(storeId)

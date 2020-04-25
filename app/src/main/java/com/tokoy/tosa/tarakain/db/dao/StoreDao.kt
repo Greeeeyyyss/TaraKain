@@ -25,6 +25,12 @@ interface StoreDao {
     @Query("SELECT * FROM Store WHERE isFavorite = 1 ORDER BY name")
     fun getAllFavorites(): LiveData<List<Store>>
 
+    @Query("SELECT * FROM Store WHERE name LIKE :search")
+    fun searchStore(search: String): LiveData<List<Store>>
+
+    @Query("SELECT * FROM Store WHERE isFavorite = 1 AND name LIKE :search")
+    fun searchFavoriteStore(search: String): LiveData<List<Store>>
+
     @Delete
     suspend fun removeStore(store: Store)
 }

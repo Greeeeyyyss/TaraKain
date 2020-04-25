@@ -34,4 +34,17 @@ class StoreListViewModelTest : BaseViewModelTest() {
         viewModel.updateStore(store)
         assertEquals(store, viewModel.isStoreUpdated.value?.getContentIfNotHandled())
     }
+
+    @Test
+    fun testClearSearch() {
+        viewModel.searchText.set("Store X")
+        // viewModel.onClearSearch()
+        // assertEquals("", viewModel.searchText.get())
+    }
+
+    @Test
+    fun testSearchStore() {
+        viewModel.searchText.set("Store X")
+        // viewModel.searchStore()
+    }
 }

@@ -27,6 +27,6 @@
     <string name="flip_instruction">Start flipping by adding \n at least 2 stores</string>
     <string name="choose_category">Choose a category</string>
     <string name="price_optional">Price (Optional)</string>
-    <string name="search">Search...</string>
+    <string name="search">Search…</string>
 
 </resources>
