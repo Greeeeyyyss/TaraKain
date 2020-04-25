@@ -29,7 +29,7 @@
                     android:id="@+id/store_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@={viewModel.storeName}"
+                    android:text="@={viewModel.newStore.name}"
                     android:hint="@string/store" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -43,8 +43,6 @@
                 android:layout_marginEnd="16dp"
                 android:onClick="@{() -> viewModel.addStore()}"
                 android:text="@string/save"
-                android:alpha="@{viewModel.storeName.trim().empty ? 0.7f : 1f}"
-                android:enabled="@{viewModel.storeName.trim().empty ? false : true}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +55,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/add_favorite"
-                android:checked="@={viewModel.isFavorite}"
+                android:checked="@={viewModel.newStore.favorite}"
                 android:button="@drawable/checkbox_favorite"
                 app:layout_constraintEnd_toStartOf="@+id/_center"
                 app:layout_constraintStart_toStartOf="parent"
@@ -131,7 +129,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/min_price"
-                    android:text="@={viewModel.minPrice}"
+                    android:text="@={viewModel.newStore.minPrice}"
                     android:inputType="number"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -147,7 +145,7 @@
                     android:id="@+id/max_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@={viewModel.maxPrice}"
+                    android:text="@={viewModel.newStore.maxPrice}"
                     android:hint="@string/max_price"
                     android:inputType="numberDecimal"/>
         </com.google.android.material.textfield.TextInputLayout>

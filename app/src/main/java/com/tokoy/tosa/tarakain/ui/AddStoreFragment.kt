@@ -41,7 +41,7 @@ class AddStoreFragment : Fragment(), Injectable {
         )
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(AddStoreViewModel::class.java)
-        viewModel.isFavorite.set(args.isFavorites)
+        viewModel.isFavorite = args.isFavorites
 
         setupObservers()
         return binding.root

@@ -19,25 +19,20 @@ class AddStoreViewModel @Inject constructor (
     var categoryList: List<Category> = mutableListOf()
     var categoryNames = listOf<String>()
     var categoryIndex = ObservableField(0)
-    var storeName = ObservableField("")
-    var minPrice = ObservableField(0)
-    var maxPrice = ObservableField(0)
-    var isFavorite = ObservableField(false)
+    var isFavorite = false
     var storeAdded = MutableLiveData<Event<Boolean>>()
+    var newStore: Store = Store(
+        name = "",
+        isFavorite = isFavorite
+    )
 
-    fun isStoreValid() = storeName.get()?.isNotBlank() ?: false
+    fun isStoreValid() = newStore.name.isNotBlank()
 
     fun getCategories() = categoryRepo.getCategories()
 
     fun addStore() {
         if (isStoreValid()) {
-            val newStore = Store(
-                name = storeName.get() ?: "",
-                isFavorite = isFavorite.get() ?: false,
-                category = categoryList[categoryIndex.get() ?: 0],
-                minPrice = minPrice.get(),
-                maxPrice = maxPrice.get()
-            )
+            newStore.category = categoryList[categoryIndex.get() ?: 0]
             viewModelScope.launch {
                 storeRepo.addStore(newStore)
             }
