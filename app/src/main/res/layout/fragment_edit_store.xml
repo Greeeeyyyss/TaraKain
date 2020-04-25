@@ -68,11 +68,58 @@
                 app:layout_constraintTop_toBottomOf="@id/textInputLayout_store"/>
 
         <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/_center"
+                android:id="@+id/center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintGuide_percent="0.5"
                 android:orientation="vertical" />
+
+        <TextView
+                android:id="@+id/text_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/price_optional"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textInputLayout_category" />
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toStartOf="@id/center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_price">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/min_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={viewModel.store.minPrice}"
+                    android:hint="@string/min_price"
+                    android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/center"
+                app:layout_constraintTop_toBottomOf="@id/text_price">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/max_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={viewModel.store.maxPrice}"
+                    android:hint="@string/max_price"
+                    android:inputType="numberDecimal"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <CheckBox
                 android:id="@+id/add_to_favorites"
@@ -84,9 +131,9 @@
                 android:button="@drawable/checkbox_favorite"
                 android:paddingEnd="20dp"
                 android:checked="@={viewModel.store.favorite}"
-                app:layout_constraintEnd_toStartOf="@+id/_center"
+                app:layout_constraintEnd_toStartOf="@id/center"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spinner" />
+                app:layout_constraintTop_toBottomOf="@id/textInputLayout3" />
 
         <Button
                 android:id="@+id/btn_save"

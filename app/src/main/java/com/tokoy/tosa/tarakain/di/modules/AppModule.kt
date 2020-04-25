@@ -15,7 +15,6 @@ class AppModule {
     @Singleton
     @Provides
     fun provideDatabase(app: Application): TaraKainDatabase {
-        // TODO add pre-category
         return Room
             .databaseBuilder(app, TaraKainDatabase::class.java, "tarakain.db")
             .fallbackToDestructiveMigration()

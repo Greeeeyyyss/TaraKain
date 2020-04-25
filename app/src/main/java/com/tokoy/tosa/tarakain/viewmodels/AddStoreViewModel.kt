@@ -20,6 +20,8 @@ class AddStoreViewModel @Inject constructor (
     var categoryNames = listOf<String>()
     var categoryIndex = ObservableField(0)
     var storeName = ObservableField("")
+    var minPrice = ObservableField(0)
+    var maxPrice = ObservableField(0)
     var isFavorite = ObservableField(false)
     var storeAdded = MutableLiveData<Event<Boolean>>()
 
@@ -32,7 +34,9 @@ class AddStoreViewModel @Inject constructor (
             val newStore = Store(
                 name = storeName.get() ?: "",
                 isFavorite = isFavorite.get() ?: false,
-                category = categoryList[categoryIndex.get() ?: 0]
+                category = categoryList[categoryIndex.get() ?: 0],
+                minPrice = minPrice.get(),
+                maxPrice = maxPrice.get()
             )
             viewModelScope.launch {
                 storeRepo.addStore(newStore)

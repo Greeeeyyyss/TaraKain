@@ -12,5 +12,7 @@ data class Store constructor(
     @PrimaryKey(autoGenerate = true) var id: Int? = null,
     var name: String,
     var isFavorite: Boolean,
-    var category: Category? = null
+    var category: Category? = null,
+    var minPrice: Int? = null,
+    var maxPrice: Int? = null
 )

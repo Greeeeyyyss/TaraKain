@@ -17,8 +17,8 @@
     <string name="save">Save</string>
     <string name="delete">Delete</string>
     <string name="add_favorite">Add To Favorites</string>
-    <string name="min_price">Minimum Price</string>
-    <string name="max_price">Maximum Price</string>
+    <string name="min_price">Minimum</string>
+    <string name="max_price">Maximum</string>
 
     <string name="tails">Tails</string>
     <string name="heads">Heads</string>
@@ -26,5 +26,7 @@
     <string name="randomize_instruction">Start randomizing \n by adding more stores</string>
     <string name="flip_instruction">Start flipping by adding \n at least 2 stores</string>
     <string name="choose_category">Choose a category</string>
+    <string name="price_optional">Price (Optional)</string>
+    <string name="search">Search...</string>
 
 </resources>

@@ -2,11 +2,11 @@ package com.tokoy.tosa.tarakain.db.repo
 
 import com.tokoy.tosa.tarakain.db.dao.CategoryDao
 import com.tokoy.tosa.tarakain.db.models.Category
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 @Singleton
 class CategoryRepo @Inject constructor(private val categoryDao: CategoryDao) {
@@ -26,7 +26,8 @@ class CategoryRepo @Inject constructor(private val categoryDao: CategoryDao) {
             Category(name = "Spanish"),
             Category(name = "Thai")
         )
-        GlobalScope.launch(Dispatchers.IO) {
+
+        CoroutineScope(Dispatchers.IO).launch {
             if (categoryDao.getCount() == 0) {
                 categoryDao.insertAll(categories)
             }
