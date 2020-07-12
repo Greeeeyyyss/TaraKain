@@ -10,19 +10,19 @@ fun setInt(textview: TextView, value: Int?) {
     if (value != null) {
         textview.text = value.toString()
     } else {
-        textview.text = "0"
+        textview.text = null
     }
 }
 
 @InverseBindingAdapter(attribute = "android:text")
-fun getInt(textview: TextView): Int {
+fun getInt(textview: TextView): Int? {
     val value = textview.text?.toString()
     if (value.isNullOrEmpty()) {
-        return 0
+        return null
     }
     return try {
         value.toInt()
     } catch (exception: NumberFormatException) {
-        0
+        null
     }
 }

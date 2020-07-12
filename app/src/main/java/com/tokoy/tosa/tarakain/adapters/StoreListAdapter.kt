@@ -23,10 +23,7 @@ class StoreListAdapter : RecyclerView.Adapter<StoreListAdapter.StoreListViewHold
 
         fun bind(store: Store) {
             binding.store = store
-            binding.textStoreName.setOnClickListener {
-                onStoreItemClick.invoke(store)
-            }
-            binding.textStoreCategory.setOnClickListener {
+            binding.layoutStoreItem.setOnClickListener {
                 onStoreItemClick.invoke(store)
             }
             binding.imgFavorite.setOnClickListener {

@@ -33,5 +33,6 @@
     <string name="error_store_name">Name is required</string>
     <string name="error_store_min_price">Should be less than maximum</string>
     <string name="error_store_max_price">Should be higher than minimum</string>
+    <string name="tap_the_dice">Tap the dice</string>
 
 </resources>

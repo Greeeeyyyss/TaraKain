@@ -22,9 +22,11 @@ import javax.inject.Inject
 
 class StoreOfTheDayFragment : Fragment(), Injectable {
     private lateinit var binding: FragmentStoreOfTheDayBinding
-    private var handler: Handler? = null
     private lateinit var viewModel: StoreOfTheDayViewModel
     private val args: StoreOfTheDayFragmentArgs by navArgs()
+    private var handler: Handler? = null
+    private var isRandomizing = false
+
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private val dices = arrayOf(
@@ -94,19 +96,25 @@ class StoreOfTheDayFragment : Fragment(), Injectable {
     }
 
     private fun onRandomizeClick() {
+        if (isRandomizing) return
+
+        isRandomizing = true
         Thread(Runnable {
             var i = 0
             while (i < 20) {
                 val store = viewModel.getRandomStore()
                 Thread.sleep(Constants.Duration.randomize)
                 handler?.post {
+                    val color = getRandomColor();
                     binding.textStore.text = store.name
                     binding.textCategory.text = store.category?.name
+                    binding.textStore.setTextColor(color)
                     binding.imgDice.setImageResource(dices.random())
-                    binding.imgDice.setColorFilter(getRandomColor())
+                    binding.imgDice.setColorFilter(color)
                 }
                 i++
             }
+            isRandomizing = false
         }).start()
     }
 }

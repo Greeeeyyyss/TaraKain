@@ -32,16 +32,16 @@ class EditStoreViewModel @Inject constructor(
 
     fun isStoreValid(): Boolean {
         var isValid = true
-        val maxPrice = store.maxPrice ?: 0
-        val minPrice = store.minPrice ?: 0
+        val maxPrice = store.maxPrice
+        val minPrice = store.minPrice
 
-        if (maxPrice < minPrice) {
+        minPriceError.set("")
+        maxPriceError.set("")
+
+        if (maxPrice != null && minPrice != null && maxPrice <= minPrice) {
             isValid = false
             minPriceError.set(context.getString(R.string.error_store_min_price))
             maxPriceError.set(context.getString(R.string.error_store_max_price))
-        } else {
-            minPriceError.set("")
-            maxPriceError.set("")
         }
 
         if (store.name.isBlank()) {

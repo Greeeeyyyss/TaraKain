@@ -7,69 +7,66 @@
                 name="store"
                 type="com.tokoy.tosa.tarakain.db.models.Store" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_store_item"
+    <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp">
 
-        <TextView
-                android:id="@+id/text_store_name"
-                android:layout_width="0dp"
+        <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@{store.name}"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@id/text_store_category"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@string/store" />
+                android:orientation="horizontal">
 
-        <TextView
-                android:id="@+id/text_store_category"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="@{store.category.name}"
-                android:textColor="@android:color/black"
-                app:layout_constraintBottom_toTopOf="@id/view_divider"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:text="@string/choose_category" />
+            <LinearLayout
+                    android:id="@+id/layout_store_item"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                <TextView
+                        android:id="@+id/text_store_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@{store.name}"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="16sp"
+                        tools:text="@string/store" />
+
+                <TextView
+                        android:id="@+id/text_store_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@{store.category.name}"
+                        android:textColor="@android:color/black"
+                        tools:text="@string/choose_category" />
+
+            </LinearLayout>
+
+            <ImageView
+                    android:id="@+id/img_favorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/add_favorite"
+                    android:layout_gravity="center"
+                    android:src="@{store.favorite ? @drawable/ic_favorite_selected: @drawable/ic_favorite_unselected}"
+                    tools:src="@drawable/ic_favorite_selected"/>
+
+        </LinearLayout>
 
         <View
                 android:id="@+id/view_divider"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="0.5dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:background="@color/colorPrimaryDark"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:background="@color/colorPrimaryDark" />
 
-        <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.90" />
-
-        <ImageView
-                android:id="@+id/img_favorite"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/add_favorite"
-                android:src="@{store.favorite ? @drawable/ic_favorite_selected: @drawable/ic_favorite_unselected}"
-                app:layout_constraintBottom_toTopOf="@+id/view_divider"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/guideline"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/ic_favorite_selected"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

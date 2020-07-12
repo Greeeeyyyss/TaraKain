@@ -34,16 +34,13 @@ class AddStoreViewModel @Inject constructor (
 
     fun isStoreValid(): Boolean {
         var isValid = true
-        val maxPrice = newStore.maxPrice ?: 0
-        val minPrice = newStore.minPrice ?: 0
+        val maxPrice = newStore.maxPrice
+        val minPrice = newStore.minPrice
 
-        if (maxPrice < minPrice) {
+        if (maxPrice != null && minPrice != null && maxPrice <= minPrice) {
             isValid = false
             minPriceError.set(context.getString(R.string.error_store_min_price))
             maxPriceError.set(context.getString(R.string.error_store_max_price))
-        } else {
-            minPriceError.set("")
-            maxPriceError.set("")
         }
 
         if (newStore.name.isBlank()) {
@@ -58,6 +55,10 @@ class AddStoreViewModel @Inject constructor (
     fun getCategories() = categoryRepo.getCategories()
 
     fun addStore() {
+
+        minPriceError.set("")
+        maxPriceError.set("")
+
         if (isStoreValid()) {
             newStore.category = categoryList[categoryIndex.get() ?: 0]
             viewModelScope.launch {

@@ -40,6 +40,7 @@
                 android:layout_marginStart="@dimen/layout_margin_right"
                 android:layout_marginEnd="16dp"
                 android:text="@{viewModel.chosenStore.name}"
+                android:textColor="@color/colorPrimary"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textAlignment="center"
@@ -75,15 +76,25 @@
                 android:layout_height="211dp"
                 android:contentDescription="@string/app_name"
                 android:src="@{viewModel.isFavorites ? @drawable/ic_dice_3 : @drawable/ic_dice_5}"
-                android:tint="@color/colorPrimaryDark"
+                android:tint="@color/colorPrimary"
                 android:onClick="@{() -> viewModel.randomize()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="2:1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@drawable/ic_dice_5" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tap_the_dice"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_dice" />
 
         <Button
                 android:id="@+id/btn_add_store"
