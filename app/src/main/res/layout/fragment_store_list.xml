@@ -2,6 +2,7 @@
 <layout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
         <variable
                 name="showEmptyState"
@@ -11,13 +12,16 @@
                 type="com.tokoy.tosa.tarakain.viewmodels.StoreListViewModel" />
         <import type="android.view.View" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:layout_marginTop="@dimen/toolbar_height">
-        <include layout="@layout/view_empty_state"
-                android:visibility="@{showEmptyState ? View.VISIBLE : View.GONE}"/>
+
+        <include
+                layout="@layout/view_empty_state"
+                app:isGone="@{!showEmptyState}" />
+
         <EditText
                 android:id="@+id/edit_text_search"
                 android:layout_width="0dp"
@@ -56,10 +60,12 @@
                 android:id="@+id/recyclerview"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:visibility="@{showEmptyState ? View.GONE : View.VISIBLE}"
+                app:isGone="@{showEmptyState}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/edit_text_search"
                 app:layout_constraintBottom_toBottomOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

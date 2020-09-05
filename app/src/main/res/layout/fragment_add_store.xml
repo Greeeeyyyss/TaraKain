@@ -12,15 +12,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/toolbar_height">
+            android:layout_marginTop="@dimen/toolbar_height"
+            android:layout_marginHorizontal="@dimen/layout_margin">
 
         <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
+                android:id="@+id/textInputLayout_store"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
                 app:error="@{viewModel.nameError}"
                 app:errorEnabled="true"
                 app:errorTextColor="@color/colorRed"
@@ -40,10 +39,8 @@
                 android:id="@+id/btn_add_store"
                 style="@style/PrimaryButton"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="16dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
                 android:onClick="@{() -> viewModel.addStore()}"
                 android:text="@string/save"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -55,25 +52,22 @@
                 android:id="@+id/add_to_favorites"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/add_favorite"
                 android:checked="@={viewModel.newStore.favorite}"
                 android:button="@drawable/checkbox_favorite"
-                app:layout_constraintEnd_toStartOf="@+id/_center"
+                app:layout_constraintEnd_toStartOf="@id/_center"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
+                app:layout_constraintTop_toBottomOf="@id/textInputLayout_minimum_price" />
 
         <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout2"
+                android:id="@+id/textInputLayout_choose_category"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+                app:layout_constraintTop_toBottomOf="@id/textInputLayout_store">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInput_category"
@@ -89,15 +83,13 @@
                 android:id="@+id/spinner"
                 android:layout_width="0dp"
                 android:layout_height="70dp"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
                 android:entries="@{viewModel.categoryNames}"
                 android:selectedItemPosition="@={viewModel.categoryIndex}"
                 android:spinnerMode="dialog"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textInputLayout"/>
+                app:layout_constraintTop_toBottomOf="@id/textInputLayout_store"/>
 
         <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/_center"
@@ -110,18 +102,17 @@
                 android:id="@+id/text_price"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
+                android:layout_marginStart="2dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/price_optional"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textInputLayout2" />
+                app:layout_constraintTop_toBottomOf="@id/textInputLayout_choose_category" />
 
         <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout3"
+                android:id="@+id/textInputLayout_minimum_price"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 app:errorTextColor="@color/colorRed"
                 app:error="@{viewModel.minPriceError}"
@@ -145,13 +136,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
                 android:hint="@string/max_price"
                 app:error="@{viewModel.maxPriceError}"
                 app:errorEnabled="true"
                 app:errorTextColor="@color/colorRed"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/_center"
+                app:layout_constraintStart_toStartOf="@id/_center"
                 app:layout_constraintTop_toBottomOf="@id/text_price">
 
             <com.google.android.material.textfield.TextInputEditText

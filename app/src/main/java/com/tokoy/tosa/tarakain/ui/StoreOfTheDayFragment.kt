@@ -19,6 +19,7 @@ import com.tokoy.tosa.tarakain.utils.EventObserver
 import com.tokoy.tosa.tarakain.utils.getRandomColor
 import com.tokoy.tosa.tarakain.viewmodels.StoreOfTheDayViewModel
 import javax.inject.Inject
+import kotlin.math.min
 
 class StoreOfTheDayFragment : Fragment(), Injectable {
     private lateinit var binding: FragmentStoreOfTheDayBinding
@@ -101,7 +102,8 @@ class StoreOfTheDayFragment : Fragment(), Injectable {
         isRandomizing = true
         Thread(Runnable {
             var i = 0
-            while (i < 20) {
+            val timer = min(viewModel.storeList.count() * 2, 20)
+            while (i < timer) {
                 val store = viewModel.getRandomStore()
                 Thread.sleep(Constants.Duration.randomize)
                 handler?.post {

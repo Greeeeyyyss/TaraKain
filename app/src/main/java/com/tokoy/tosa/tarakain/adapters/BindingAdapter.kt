@@ -1,5 +1,6 @@
 package com.tokoy.tosa.tarakain.adapters
 
+import android.view.View
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
@@ -25,4 +26,9 @@ fun getInt(textview: TextView): Int? {
     } catch (exception: NumberFormatException) {
         null
     }
+}
+
+@BindingAdapter("isGone")
+fun setIsGone(view: View, isGone: Boolean) {
+    view.visibility = if (isGone) View.GONE else View.VISIBLE
 }
