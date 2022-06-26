@@ -10,4 +10,4 @@ An Android application that let's you pick a randomized restaurant whenever you 
 - Lint
 
 ## Future Goal
-To integrate Google Maps API and display nearby food places and possibly randomize and pick from it.
+To integrate Google Places API and display nearby food places and possibly randomize and pick from it.
